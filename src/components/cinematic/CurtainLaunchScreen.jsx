@@ -58,21 +58,22 @@ export function CurtainLaunchScreen() {
   };
 
   const leftBadges = [
-    { icon: <GraduationCap size={22} />, color: '#0099FF', bg: 'rgba(0,153,255,0.18)', shadow: 'rgba(0,153,255,0.5)', label: 'Cherish\nMemories' },
-    { icon: <Users size={22} />, color: '#8BC53F', bg: 'rgba(139,197,63,0.18)', shadow: 'rgba(139,197,63,0.5)', label: 'Reconnect\nwith Friends' },
-    { icon: <Globe size={22} />, color: '#A855F7', bg: 'rgba(168,85,247,0.18)', shadow: 'rgba(168,85,247,0.5)', label: 'Global\nNetwork' },
+    { icon: <GraduationCap size={26} />, color: '#0099FF', bg: 'rgba(0,153,255,0.18)', shadow: 'rgba(0,153,255,0.5)', label: 'Cherish\nMemories' },
+    { icon: <Users size={26} />, color: '#8BC53F', bg: 'rgba(139,197,63,0.18)', shadow: 'rgba(139,197,63,0.5)', label: 'Reconnect\nwith Friends' },
+    { icon: <Globe size={26} />, color: '#A855F7', bg: 'rgba(168,85,247,0.18)', shadow: 'rgba(168,85,247,0.5)', label: 'Global\nNetwork' },
   ];
 
   const rightBadges = [
-    { icon: <Briefcase size={22} />, color: '#8BC53F', bg: 'rgba(139,197,63,0.18)', shadow: 'rgba(139,197,63,0.5)', label: 'Explore\nOpportunities' },
-    { icon: <Handshake size={22} />, color: '#0099FF', bg: 'rgba(0,153,255,0.18)', shadow: 'rgba(0,153,255,0.5)', label: 'Collaborate\n& Grow' },
-    { icon: <Calendar size={22} />, color: '#A855F7', bg: 'rgba(168,85,247,0.18)', shadow: 'rgba(168,85,247,0.5)', label: 'Events\n& Reunions' },
+    { icon: <Briefcase size={26} />, color: '#8BC53F', bg: 'rgba(139,197,63,0.18)', shadow: 'rgba(139,197,63,0.5)', label: 'Explore\nOpportunities' },
+    { icon: <Handshake size={26} />, color: '#0099FF', bg: 'rgba(0,153,255,0.18)', shadow: 'rgba(0,153,255,0.5)', label: 'Collaborate\n& Grow' },
+    { icon: <Calendar size={26} />, color: '#A855F7', bg: 'rgba(168,85,247,0.18)', shadow: 'rgba(168,85,247,0.5)', label: 'Events\n& Reunions' },
   ];
 
   return (
     <div style={{
       position: 'fixed', inset: 0, zIndex: 9999, background: '#040914',
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between',
+      padding: isMobile ? '0.5rem' : '0.8rem 1rem 0.4rem',
       overflow: 'hidden',
     }}>
       {/* ── LIVE WEBSITE REVEALED DIRECTLY BEHIND OPENING CURTAINS ── */}
@@ -137,14 +138,14 @@ export function CurtainLaunchScreen() {
         </>
       )}
 
-      {/* ═══════════ MAIN GLASS CARD FULL-SCREEN BORDER LAYOUT ═══════════ */}
+      {/* ═══════════ MAIN GLASS CARD FULL-SCREEN EXPANDED LAYOUT ═══════════ */}
       <div style={{
         position: 'relative', zIndex: 110,
-        width: isMobile ? '96%' : '98%',
-        maxWidth: '98%',
-        height: isMobile ? 'auto' : 'calc(100vh - 50px)',
-        minHeight: isMobile ? 'auto' : 'calc(100vh - 50px)',
-        padding: isMobile ? '2.2rem 1rem 1.8rem' : '2.5rem 3.5rem 2.2rem',
+        width: isMobile ? '98%' : '98.5%',
+        maxWidth: '98.5%',
+        height: isMobile ? 'auto' : 'calc(100vh - 75px)',
+        minHeight: isMobile ? 'auto' : 'calc(100vh - 75px)',
+        padding: isMobile ? '2.2rem 1rem 1.8rem' : '2.8rem 3.5rem 2.2rem',
         margin: '0 auto',
         display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
         textAlign: 'center', borderRadius: '28px',
@@ -161,42 +162,40 @@ export function CurtainLaunchScreen() {
         {/* Top center emblem badge */}
         <div style={{
           position: 'absolute', top: '-25px', left: '50%', transform: 'translateX(-50%)',
-          width: isMobile ? '42px' : '52px', height: isMobile ? '42px' : '52px',
-          borderRadius: '50%', background: '#081022', border: '2px solid #8BC53F', color: '#8BC53F',
+          width: isMobile ? '44px' : '56px', height: isMobile ? '44px' : '56px',
+          borderRadius: '50%', background: '#081022', border: '2.5px solid #8BC53F', color: '#8BC53F',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           boxShadow: '0 0 25px rgba(139,197,63,0.65)', zIndex: 115,
         }}>
-          <Users size={isMobile ? 20 : 24} />
+          <Users size={isMobile ? 22 : 26} />
         </div>
-
-
 
         {/* ── MAIN CONTENT AREA WITH 6 FEATURE BADGES INSIDE CARD ── */}
         <div style={{
           display: 'flex',
-          alignItems: 'flex-start',
+          alignItems: 'center',
           justifyContent: 'space-between',
-          gap: isMobile ? '0' : '2rem',
+          gap: isMobile ? '0' : '2.5rem',
+          flex: 1,
           position: 'relative', zIndex: 5,
         }}>
-          {/* Left Column: 3 Badges INSIDE Card (Top aligned with logos starting height) */}
+          {/* Left Column: 3 Badges INSIDE Card */}
           {!isMobile && (
             <div style={{
-              display: 'flex', flexDirection: 'column', gap: '2.4rem',
-              alignItems: 'center', minWidth: '140px', paddingLeft: '0.8rem',
-              marginTop: '0.2rem',
+              display: 'flex', flexDirection: 'column', gap: '3.5rem',
+              alignItems: 'center', minWidth: '160px', paddingLeft: '1rem',
             }}>
               {leftBadges.map((item, i) => (
-                <div key={i} className={`float-badge-${i}`} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.45rem' }}>
+                <div key={i} className={`float-badge-${i}`} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.65rem' }}>
                   <div style={{
-                    padding: '0.85rem', borderRadius: '50%', background: item.bg,
-                    border: `1.5px solid ${item.color}`, color: item.color,
-                    boxShadow: `0 0 22px ${item.shadow}`, backdropFilter: 'blur(8px)',
+                    padding: '1.05rem', borderRadius: '50%', background: item.bg,
+                    border: `2px solid ${item.color}`, color: item.color,
+                    boxShadow: `0 0 28px ${item.shadow}`, backdropFilter: 'blur(8px)',
                     transition: 'transform 0.2s ease',
                   }}>
                     {item.icon}
                   </div>
-                  <span style={{ fontSize: '0.78rem', fontWeight: '700', color: '#E2E8F0', textShadow: '0 2px 4px rgba(0,0,0,0.8)', textAlign: 'center', whiteSpace: 'pre-line', lineHeight: '1.25' }}>
+                  <span style={{ fontSize: '0.88rem', fontWeight: '700', color: '#E2E8F0', textShadow: '0 2px 4px rgba(0,0,0,0.8)', textAlign: 'center', whiteSpace: 'pre-line', lineHeight: '1.3' }}>
                     {item.label}
                   </span>
                 </div>
@@ -205,92 +204,91 @@ export function CurtainLaunchScreen() {
           )}
 
           {/* Center Column: Main Title, Info & Countdown */}
-          <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
 
             {/* Cursive Welcome Back */}
             <div style={{
               fontFamily: "'Dancing Script','Brush Script MT',cursive,Georgia,serif",
-              color: '#8BC53F', fontSize: isMobile ? '1.25rem' : '1.9rem',
-              fontWeight: '600', fontStyle: 'italic', marginBottom: '0.9rem',
-              marginTop: '0.2rem',
-              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.6rem',
+              color: '#8BC53F', fontSize: isMobile ? '1.4rem' : '2.4rem',
+              fontWeight: '700', fontStyle: 'italic', marginBottom: '1.1rem',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.8rem',
             }}>
-              <span style={{ width: '35px', height: '1px', background: 'linear-gradient(90deg,transparent,#8BC53F)' }} />
+              <span style={{ width: '45px', height: '1.5px', background: 'linear-gradient(90deg,transparent,#8BC53F)' }} />
               Welcome Back
-              <span style={{ width: '35px', height: '1px', background: 'linear-gradient(-90deg,transparent,#8BC53F)' }} />
+              <span style={{ width: '45px', height: '1.5px', background: 'linear-gradient(-90deg,transparent,#8BC53F)' }} />
             </div>
 
-            {/* INCREASED LOGO SIZES (Aligned starting height with top side badges) */}
+            {/* SIGNIFICANTLY INCREASED LOGO SIZES */}
             <div style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              gap: isMobile ? '1.2rem' : '3.5rem',
-              marginBottom: '1.6rem',
+              gap: isMobile ? '1.4rem' : '4rem',
+              marginBottom: '1.8rem',
             }}>
               {heroImg && (
                 <div style={{
-                  padding: isMobile ? '0.45rem 0.9rem' : '0.75rem 1.8rem',
-                  background: '#FFFFFF', borderRadius: '16px',
-                  border: '2.5px solid #00F2FE', boxShadow: '0 0 28px rgba(0,242,254,0.6)',
+                  padding: isMobile ? '0.5rem 1.1rem' : '0.9rem 2.4rem',
+                  background: '#FFFFFF', borderRadius: '18px',
+                  border: '3px solid #00F2FE', boxShadow: '0 0 35px rgba(0,242,254,0.65)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   transition: 'transform 0.2s ease',
                 }}>
-                  <img src={heroImg} alt="KEC Emblem" style={{ height: isMobile ? '40px' : '66px', width: 'auto', objectFit: 'contain' }} />
+                  <img src={heroImg} alt="KEC Emblem" style={{ height: isMobile ? '46px' : '82px', width: 'auto', objectFit: 'contain' }} />
                 </div>
               )}
               <div style={{
-                padding: isMobile ? '0.45rem 0.9rem' : '0.75rem 1.8rem',
-                background: '#FFFFFF', borderRadius: '16px',
-                border: '2.5px solid #F4C542', boxShadow: '0 0 28px rgba(244,197,66,0.6)',
+                padding: isMobile ? '0.5rem 1.1rem' : '0.9rem 2.4rem',
+                background: '#FFFFFF', borderRadius: '18px',
+                border: '3px solid #F4C542', boxShadow: '0 0 35px rgba(244,197,66,0.65)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 transition: 'transform 0.2s ease',
               }}>
-                <img src={logoImg} alt="KECAA Logo" style={{ height: isMobile ? '40px' : '66px', width: 'auto', objectFit: 'contain' }} />
+                <img src={logoImg} alt="KECAA Logo" style={{ height: isMobile ? '46px' : '82px', width: 'auto', objectFit: 'contain' }} />
               </div>
             </div>
 
             {/* Feature pills */}
             <div style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              flexWrap: 'wrap', gap: isMobile ? '0.4rem' : '1.3rem',
-              color: '#E2E8F0', fontSize: isMobile ? '0.74rem' : '0.92rem',
-              fontWeight: '600', marginBottom: '0.7rem',
+              flexWrap: 'wrap', gap: isMobile ? '0.5rem' : '1.6rem',
+              color: '#E2E8F0', fontSize: isMobile ? '0.8rem' : '1.05rem',
+              fontWeight: '700', marginBottom: '0.9rem',
             }}>
-              <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}><Users size={15} color="#8BC53F" /> Stay Connected.</span>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}><Users size={18} color="#8BC53F" /> Stay Connected.</span>
               <span style={{ color: '#334155' }}>|</span>
-              <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}><TrendingUp size={15} color="#8BC53F" /> Grow Together.</span>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}><TrendingUp size={18} color="#8BC53F" /> Grow Together.</span>
               <span style={{ color: '#334155' }}>|</span>
-              <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}><Heart size={15} color="#8BC53F" /> Make an Impact.</span>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}><Heart size={18} color="#8BC53F" /> Make an Impact.</span>
             </div>
 
-            {/* Tagline referring to College Alumni Connections & Friends */}
+            {/* Tagline */}
             <div style={{
-              fontSize: isMobile ? '0.76rem' : '0.88rem', color: '#FFFFFF',
-              maxWidth: '520px', margin: '0 auto', lineHeight: 1.45,
-              marginBottom: isMobile ? '0.9rem' : '1.4rem',
+              fontSize: isMobile ? '0.8rem' : '1.02rem', color: '#FFFFFF',
+              maxWidth: '650px', margin: '0 auto', lineHeight: 1.55,
+              marginBottom: isMobile ? '1.1rem' : '1.8rem', fontWeight: '500',
             }}>
               Connecting 35,000+ KEC alumni inspiring, supporting, and shaping a better tomorrow across the globe.
             </div>
 
             {/* Fixed-Height Action Slot */}
             <div style={{
-              minHeight: isMobile ? '110px' : '135px',
+              minHeight: isMobile ? '120px' : '150px',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
               alignItems: 'center',
-              marginBottom: isMobile ? '0.5rem' : '0.8rem',
+              marginBottom: isMobile ? '0.5rem' : '1rem',
             }}>
               {countdown > 0 ? (
                 <>
                   <div style={{
-                    color: '#8BC53F', fontSize: isMobile ? '0.72rem' : '0.88rem', fontWeight: '700',
-                    textTransform: 'uppercase', letterSpacing: '0.08em',
-                    marginBottom: '0.5rem',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.6rem',
+                    color: '#8BC53F', fontSize: isMobile ? '0.78rem' : '0.96rem', fontWeight: '800',
+                    textTransform: 'uppercase', letterSpacing: '0.1em',
+                    marginBottom: '0.7rem',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.8rem',
                   }}>
-                    <span style={{ width: '32px', height: '1px', background: 'linear-gradient(90deg,transparent,#8BC53F)' }} />
+                    <span style={{ width: '40px', height: '1.5px', background: 'linear-gradient(90deg,transparent,#8BC53F)' }} />
                     Launching Your Alumni Portal In
-                    <span style={{ width: '32px', height: '1px', background: 'linear-gradient(-90deg,transparent,#8BC53F)' }} />
+                    <span style={{ width: '40px', height: '1.5px', background: 'linear-gradient(-90deg,transparent,#8BC53F)' }} />
                   </div>
 
                   {/* SINGLE LIVE COUNTDOWN BOX */}
@@ -298,25 +296,25 @@ export function CurtainLaunchScreen() {
                     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0',
                   }}>
                     <div style={{
-                      background: 'rgba(10,22,47,0.88)',
-                      border: '1.5px solid rgba(139,197,63,0.55)',
-                      borderRadius: '16px',
-                      padding: isMobile ? '0.6rem 1.6rem' : '0.75rem 2.4rem',
-                      boxShadow: '0 0 25px rgba(139,197,63,0.3), inset 0 0 15px rgba(139,197,63,0.1)',
+                      background: 'rgba(10,22,47,0.92)',
+                      border: '2px solid rgba(139,197,63,0.65)',
+                      borderRadius: '20px',
+                      padding: isMobile ? '0.7rem 1.8rem' : '0.9rem 3.2rem',
+                      boxShadow: '0 0 30px rgba(139,197,63,0.35), inset 0 0 20px rgba(139,197,63,0.15)',
                       display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                      minWidth: isMobile ? '95px' : '130px',
+                      minWidth: isMobile ? '105px' : '150px',
                     }}>
                       <div style={{
-                        fontSize: isMobile ? '2.1rem' : '2.7rem', fontWeight: '900',
+                        fontSize: isMobile ? '2.4rem' : '3.4rem', fontWeight: '900',
                         color: '#8BC53F', lineHeight: 1, letterSpacing: '0.04em',
                         fontVariantNumeric: 'tabular-nums',
-                        filter: 'drop-shadow(0 0 12px rgba(139,197,63,0.6))',
+                        filter: 'drop-shadow(0 0 15px rgba(139,197,63,0.7))',
                       }}>
                         {String(countdown).padStart(2, '0')}
                       </div>
                       <div style={{
-                        fontSize: '0.62rem', fontWeight: '800', color: '#8BC53F',
-                        textTransform: 'uppercase', letterSpacing: '0.18em', marginTop: '0.35rem',
+                        fontSize: '0.68rem', fontWeight: '800', color: '#8BC53F',
+                        textTransform: 'uppercase', letterSpacing: '0.22em', marginTop: '0.45rem',
                       }}>
                         SECONDS
                       </div>
@@ -328,48 +326,47 @@ export function CurtainLaunchScreen() {
                 <button
                   onClick={handleLaunchNowClick}
                   style={{
-                    width: '100%', maxWidth: isMobile ? '320px' : '440px',
-                    padding: isMobile ? '0.75rem 1.1rem' : '0.9rem 1.5rem',
+                    width: '100%', maxWidth: isMobile ? '320px' : '460px',
+                    padding: isMobile ? '0.85rem 1.3rem' : '1.05rem 2rem',
                     borderRadius: '9999px',
                     background: 'linear-gradient(90deg,#8BC53F 0%,#0099FF 50%,#0066FF 100%)',
                     color: '#FFFFFF', fontWeight: '900',
-                    fontSize: isMobile ? '0.9rem' : '1.15rem',
+                    fontSize: isMobile ? '1rem' : '1.25rem',
                     letterSpacing: '0.04em', border: 'none', cursor: 'pointer',
                     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                    boxShadow: '0 0 35px rgba(0,153,255,0.6), 0 0 20px rgba(139,197,63,0.4)',
+                    boxShadow: '0 0 40px rgba(0,153,255,0.65), 0 0 25px rgba(139,197,63,0.45)',
                     transition: 'transform 0.2s ease, box-shadow 0.2s ease',
                   }}
                 >
-                  <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: 'rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <Rocket size={16} color="#FFFFFF" />
+                  <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: 'rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Rocket size={18} color="#FFFFFF" />
                   </div>
                   <span>LAUNCH</span>
-                  <div style={{ width: '30px', height: '30px', borderRadius: '50%', background: 'rgba(255,255,255,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <ChevronRight size={18} color="#FFFFFF" />
+                  <div style={{ width: '34px', height: '34px', borderRadius: '50%', background: 'rgba(255,255,255,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <ChevronRight size={20} color="#FFFFFF" />
                   </div>
                 </button>
               )}
             </div>
           </div>
 
-          {/* Right Column: 3 Badges INSIDE Card (Top aligned with logos starting height) */}
+          {/* Right Column: 3 Badges INSIDE Card */}
           {!isMobile && (
             <div style={{
-              display: 'flex', flexDirection: 'column', gap: '2.4rem',
-              alignItems: 'center', minWidth: '140px', paddingRight: '0.8rem',
-              marginTop: '0.2rem',
+              display: 'flex', flexDirection: 'column', gap: '3.5rem',
+              alignItems: 'center', minWidth: '160px', paddingRight: '1rem',
             }}>
               {rightBadges.map((item, i) => (
-                <div key={i} className={`float-badge-${i}`} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.45rem' }}>
+                <div key={i} className={`float-badge-${i}`} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.65rem' }}>
                   <div style={{
-                    padding: '0.85rem', borderRadius: '50%', background: item.bg,
-                    border: `1.5px solid ${item.color}`, color: item.color,
-                    boxShadow: `0 0 22px ${item.shadow}`, backdropFilter: 'blur(8px)',
+                    padding: '1.05rem', borderRadius: '50%', background: item.bg,
+                    border: `2px solid ${item.color}`, color: item.color,
+                    boxShadow: `0 0 28px ${item.shadow}`, backdropFilter: 'blur(8px)',
                     transition: 'transform 0.2s ease',
                   }}>
                     {item.icon}
                   </div>
-                  <span style={{ fontSize: '0.78rem', fontWeight: '700', color: '#E2E8F0', textShadow: '0 2px 4px rgba(0,0,0,0.8)', textAlign: 'center', whiteSpace: 'pre-line', lineHeight: '1.25' }}>
+                  <span style={{ fontSize: '0.88rem', fontWeight: '700', color: '#E2E8F0', textShadow: '0 2px 4px rgba(0,0,0,0.8)', textAlign: 'center', whiteSpace: 'pre-line', lineHeight: '1.3' }}>
                     {item.label}
                   </span>
                 </div>
@@ -378,28 +375,27 @@ export function CurtainLaunchScreen() {
           )}
         </div>
 
-        {/* Trust footer */}
+        {/* Trust footer inside card */}
         <div style={{
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          gap: isMobile ? '0.7rem' : '1.4rem',
-          fontSize: '0.78rem', color: '#FFFFFF', marginTop: '0.7rem', marginBottom: '0.1rem',
+          gap: isMobile ? '0.8rem' : '1.8rem',
+          fontSize: '0.85rem', color: '#FFFFFF', marginTop: '1rem', fontWeight: '600',
         }}>
-          <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}><ShieldCheck size={14} color="#8BC53F" /> Secure</span>
+          <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}><ShieldCheck size={16} color="#8BC53F" /> Secure</span>
           <span style={{ color: 'rgba(255,255,255,0.3)' }}>|</span>
-          <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}><Users size={14} color="#8BC53F" /> Trusted</span>
+          <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}><Users size={16} color="#8BC53F" /> Trusted</span>
           <span style={{ color: 'rgba(255,255,255,0.3)' }}>|</span>
-          <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}><Globe size={14} color="#8BC53F" /> Connected</span>
+          <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}><Globe size={16} color="#8BC53F" /> Connected</span>
         </div>
       </div>
 
-      {/* Bottom footer */}
+      {/* Bottom footer text outside card (well spaced without overlap) */}
       {curtainState === 'hidden' && (
         <div style={{
-          position: 'fixed', bottom: isMobile ? '0.5rem' : '1.25rem',
-          left: 0, right: 0, zIndex: 110, textAlign: 'center',
-          fontSize: isMobile ? '0.55rem' : '0.85rem', fontWeight: '700',
-          letterSpacing: isMobile ? '0.18em' : '0.35em',
-          color: '#475569', textTransform: 'uppercase', pointerEvents: 'none',
+          paddingTop: '0.4rem', paddingBottom: '0.2rem', zIndex: 110, textAlign: 'center',
+          fontSize: isMobile ? '0.6rem' : '0.82rem', fontWeight: '700',
+          letterSpacing: isMobile ? '0.2em' : '0.35em',
+          color: '#64748B', textTransform: 'uppercase', pointerEvents: 'none',
         }}>
           CONNECT &nbsp;•&nbsp; COLLABORATE &nbsp;•&nbsp; CONTRIBUTE
         </div>
