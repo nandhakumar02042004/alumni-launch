@@ -159,7 +159,7 @@ export function CurtainLaunchScreen() {
       {/* ═══════════ MAIN GLASS CARD ═══════════ */}
       <div style={{
         position: 'relative', zIndex: 110,
-        width: isMobile ? '92%' : '92%', maxWidth: '640px',
+        width: isMobile ? '92%' : '92%', maxWidth: '760px',
         padding: isMobile ? '1.6rem 1.1rem 1.2rem' : '2.2rem 2.25rem 1.6rem',
         margin: isMobile ? '3rem auto' : '0 auto',
         textAlign: 'center', borderRadius: '22px',
