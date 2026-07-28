@@ -208,36 +208,59 @@ export function CurtainLaunchScreen() {
               <span style={{ width: '45px', height: '1.5px', background: 'linear-gradient(-90deg,transparent,#8BC53F)' }} />
             </div>
 
-            {/* MASSIVE EXPANDED LOGO CONTAINERS (420px width x 230px height) */}
+            {/* FLUID & FLEXIBLE LOGO CONTAINERS (100% UNCROPPED FOR ALL SCREENS & 4K) */}
             <div style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              gap: isMobile ? '1.4rem' : '4.5rem',
-              marginBottom: '1.6rem',
+              gap: isMobile ? '1rem' : '3.5rem',
+              marginBottom: '1.5rem', flexWrap: 'wrap',
             }}>
               {heroImg && (
                 <div style={{
-                  padding: isMobile ? '1rem 2rem' : '1.8rem 5rem',
-                  minWidth: isMobile ? '200px' : '420px',
-                  height: isMobile ? '105px' : '230px',
-                  background: '#FFFFFF', borderRadius: '30px',
-                  border: '4.5px solid #00F2FE', boxShadow: '0 0 60px rgba(0,242,254,0.88)',
+                  padding: isMobile ? '0.6rem 1.2rem' : '1.1rem 3rem',
+                  minWidth: isMobile ? '160px' : '320px',
+                  maxWidth: '440px',
+                  minHeight: isMobile ? '70px' : '140px',
+                  maxHeight: isMobile ? '100px' : '180px',
+                  background: '#FFFFFF', borderRadius: '24px',
+                  border: '4px solid #00F2FE', boxShadow: '0 0 50px rgba(0,242,254,0.75)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  overflow: 'hidden',
-                  transition: 'transform 0.2s ease',
+                  transition: 'all 0.2s ease',
                 }}>
-                  <img src={heroImg} alt="KEC Emblem" style={{ height: isMobile ? '90px' : '210px', width: 'auto', objectFit: 'contain', maxWidth: '100%', transform: 'scale(1.32)' }} />
+                  <img
+                    src={heroImg}
+                    alt="KEC Emblem"
+                    style={{
+                      maxHeight: isMobile ? '60px' : '140px',
+                      maxWidth: '100%',
+                      width: 'auto',
+                      objectFit: 'contain',
+                      display: 'block',
+                    }}
+                  />
                 </div>
               )}
               <div style={{
-                padding: isMobile ? '1rem 2rem' : '1.8rem 5rem',
-                minWidth: isMobile ? '200px' : '420px',
-                height: isMobile ? '105px' : '230px',
-                background: '#FFFFFF', borderRadius: '30px',
-                border: '4.5px solid #F4C542', boxShadow: '0 0 60px rgba(244,197,66,0.88)',
+                padding: isMobile ? '0.6rem 1.2rem' : '1.1rem 3rem',
+                minWidth: isMobile ? '160px' : '320px',
+                maxWidth: '440px',
+                minHeight: isMobile ? '70px' : '140px',
+                maxHeight: isMobile ? '100px' : '180px',
+                background: '#FFFFFF', borderRadius: '24px',
+                border: '4px solid #F4C542', boxShadow: '0 0 50px rgba(244,197,66,0.75)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                transition: 'transform 0.2s ease',
+                transition: 'all 0.2s ease',
               }}>
-                <img src={logoImg} alt="KECAA Logo" style={{ height: isMobile ? '90px' : '210px', width: 'auto', objectFit: 'contain', maxWidth: '100%' }} />
+                <img
+                  src={logoImg}
+                  alt="KECAA Logo"
+                  style={{
+                    maxHeight: isMobile ? '60px' : '140px',
+                    maxWidth: '100%',
+                    width: 'auto',
+                    objectFit: 'contain',
+                    display: 'block',
+                  }}
+                />
               </div>
             </div>
 
