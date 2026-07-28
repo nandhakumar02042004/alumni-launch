@@ -130,7 +130,7 @@ export function CurtainLaunchScreen() {
         position: 'relative', zIndex: 110,
         width: isMobile ? '96%' : 'calc(100% - 40px)',
         maxWidth: '1380px',
-        padding: isMobile ? '1.6rem 1rem 0.8rem' : '2.2rem 3.5rem 1rem',
+        padding: isMobile ? '1.1rem 1rem 0.8rem' : '1.2rem 3.5rem 1rem',
         margin: '0 auto',
         textAlign: 'center', borderRadius: '28px',
         background: 'rgba(8,16,34,0.94)', backdropFilter: 'blur(28px)', WebkitBackdropFilter: 'blur(28px)',
@@ -191,8 +191,8 @@ export function CurtainLaunchScreen() {
             <div style={{
               fontFamily: "'Dancing Script','Brush Script MT',cursive,Georgia,serif",
               color: '#8BC53F', fontSize: isMobile ? '1.15rem' : '1.65rem',
-              fontWeight: '600', fontStyle: 'italic', marginBottom: '0.5rem',
-              marginTop: '0.2rem',
+              fontWeight: '600', fontStyle: 'italic', marginBottom: '0.4rem',
+              marginTop: '0rem',
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.6rem',
             }}>
               <span style={{ width: '35px', height: '1px', background: 'linear-gradient(90deg,transparent,#8BC53F)' }} />
@@ -251,61 +251,65 @@ export function CurtainLaunchScreen() {
               A global network of KEC alumni inspiring, supporting and shaping a better tomorrow.
             </div>
 
-            {/* Countdown headline + timer box — vanishes when countdown hits 00 */}
-            {countdown > 0 && (
-              <>
-                <div style={{
-                  color: '#8BC53F', fontSize: isMobile ? '0.72rem' : '0.88rem', fontWeight: '700',
-                  textTransform: 'uppercase', letterSpacing: '0.08em',
-                  marginBottom: '0.65rem',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.6rem',
-                }}>
-                  <span style={{ width: '32px', height: '1px', background: 'linear-gradient(90deg,transparent,#8BC53F)' }} />
-                  Launching Your Alumni Portal In
-                  <span style={{ width: '32px', height: '1px', background: 'linear-gradient(-90deg,transparent,#8BC53F)' }} />
-                </div>
-
-                {/* SINGLE LIVE COUNTDOWN BOX */}
-                <div style={{
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  gap: '0', marginBottom: isMobile ? '0.9rem' : '1.4rem',
-                }}>
+            {/* Fixed-Height Action Slot: Card border line never shifts when switching from countdown to button */}
+            <div style={{
+              minHeight: isMobile ? '110px' : '135px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              marginBottom: isMobile ? '0.5rem' : '0.8rem',
+            }}>
+              {countdown > 0 ? (
+                <>
                   <div style={{
-                    background: 'rgba(10,22,47,0.88)',
-                    border: '1.5px solid rgba(139,197,63,0.55)',
-                    borderRadius: '16px',
-                    padding: isMobile ? '0.6rem 1.6rem' : '0.8rem 2.5rem',
-                    boxShadow: '0 0 25px rgba(139,197,63,0.3), inset 0 0 15px rgba(139,197,63,0.1)',
-                    display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                    minWidth: isMobile ? '95px' : '130px',
+                    color: '#8BC53F', fontSize: isMobile ? '0.72rem' : '0.88rem', fontWeight: '700',
+                    textTransform: 'uppercase', letterSpacing: '0.08em',
+                    marginBottom: '0.5rem',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.6rem',
+                  }}>
+                    <span style={{ width: '32px', height: '1px', background: 'linear-gradient(90deg,transparent,#8BC53F)' }} />
+                    Launching Your Alumni Portal In
+                    <span style={{ width: '32px', height: '1px', background: 'linear-gradient(-90deg,transparent,#8BC53F)' }} />
+                  </div>
+
+                  {/* SINGLE LIVE COUNTDOWN BOX */}
+                  <div style={{
+                    display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0',
                   }}>
                     <div style={{
-                      fontSize: isMobile ? '2.1rem' : '2.7rem', fontWeight: '900',
-                      color: '#8BC53F', lineHeight: 1, letterSpacing: '0.04em',
-                      fontVariantNumeric: 'tabular-nums',
-                      filter: 'drop-shadow(0 0 12px rgba(139,197,63,0.6))',
+                      background: 'rgba(10,22,47,0.88)',
+                      border: '1.5px solid rgba(139,197,63,0.55)',
+                      borderRadius: '16px',
+                      padding: isMobile ? '0.6rem 1.6rem' : '0.75rem 2.4rem',
+                      boxShadow: '0 0 25px rgba(139,197,63,0.3), inset 0 0 15px rgba(139,197,63,0.1)',
+                      display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                      minWidth: isMobile ? '95px' : '130px',
                     }}>
-                      {String(countdown).padStart(2, '0')}
-                    </div>
-                    <div style={{
-                      fontSize: '0.62rem', fontWeight: '800', color: '#8BC53F',
-                      textTransform: 'uppercase', letterSpacing: '0.18em', marginTop: '0.35rem',
-                    }}>
-                      SECONDS
+                      <div style={{
+                        fontSize: isMobile ? '2.1rem' : '2.7rem', fontWeight: '900',
+                        color: '#8BC53F', lineHeight: 1, letterSpacing: '0.04em',
+                        fontVariantNumeric: 'tabular-nums',
+                        filter: 'drop-shadow(0 0 12px rgba(139,197,63,0.6))',
+                      }}>
+                        {String(countdown).padStart(2, '0')}
+                      </div>
+                      <div style={{
+                        fontSize: '0.62rem', fontWeight: '800', color: '#8BC53F',
+                        textTransform: 'uppercase', letterSpacing: '0.18em', marginTop: '0.35rem',
+                      }}>
+                        SECONDS
+                      </div>
                     </div>
                   </div>
-                </div>
-              </>
-            )}
-
-            {/* Launch button — appears instantly when countdown hits 00 */}
-            {countdown === 0 && (
-              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: isMobile ? '0.9rem' : '1.4rem' }}>
+                </>
+              ) : (
+                /* Launch button — occupies exact same height slot so border line never moves */
                 <button
                   onClick={handleLaunchNowClick}
                   style={{
                     width: '100%', maxWidth: isMobile ? '320px' : '440px',
-                    padding: isMobile ? '0.7rem 1.1rem' : '0.85rem 1.5rem',
+                    padding: isMobile ? '0.75rem 1.1rem' : '0.9rem 1.5rem',
                     borderRadius: '9999px',
                     background: 'linear-gradient(90deg,#8BC53F 0%,#0099FF 50%,#0066FF 100%)',
                     color: '#FFFFFF', fontWeight: '900',
@@ -324,8 +328,8 @@ export function CurtainLaunchScreen() {
                     <ChevronRight size={18} color="#FFFFFF" />
                   </div>
                 </button>
-              </div>
-            )}
+              )}
+            </div>
           </div>
 
           {/* Right Column: 3 Badges INSIDE Card (Desktop) */}
