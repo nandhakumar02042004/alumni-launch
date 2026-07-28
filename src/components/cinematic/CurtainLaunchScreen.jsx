@@ -206,7 +206,7 @@ export function CurtainLaunchScreen() {
               alignItems: 'center', minWidth: '140px', paddingLeft: '0.8rem',
             }}>
               {leftBadges.map((item, i) => (
-                <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.45rem' }}>
+                <div key={i} className={`float-badge-${i}`} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.45rem' }}>
                   <div style={{
                     padding: '0.85rem', borderRadius: '50%', background: item.bg,
                     border: `1.5px solid ${item.color}`, color: item.color,
@@ -391,7 +391,7 @@ export function CurtainLaunchScreen() {
               alignItems: 'center', minWidth: '140px', paddingRight: '0.8rem',
             }}>
               {rightBadges.map((item, i) => (
-                <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.45rem' }}>
+                <div key={i} className={`float-badge-${i}`} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.45rem' }}>
                   <div style={{
                     padding: '0.85rem', borderRadius: '50%', background: item.bg,
                     border: `1.5px solid ${item.color}`, color: item.color,

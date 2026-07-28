@@ -198,3 +198,29 @@ html, body {
   box-shadow: 0 0 20px var(--kec-gold-glow);
   transition: width 0.3s linear;
 }
+
+/* Floating motion animation for feature badges */
+@keyframes floatBadge {
+  0% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-9px) scale(1.05);
+  }
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+}
+
+.float-badge-0 {
+  animation: floatBadge 3.4s ease-in-out infinite;
+}
+
+.float-badge-1 {
+  animation: floatBadge 4.1s ease-in-out infinite 0.8s;
+}
+
+.float-badge-2 {
+  animation: floatBadge 3.7s ease-in-out infinite 1.5s;
+}
+
