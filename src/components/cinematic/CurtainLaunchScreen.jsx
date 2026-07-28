@@ -125,11 +125,11 @@ export function CurtainLaunchScreen() {
         </>
       )}
 
-      {/* ═══════════ MAIN GLASS CARD WITH 2-INCH MARGIN (~980px max-width) ═══════════ */}
+      {/* ═══════════ MAIN GLASS CARD WIDE LAYOUT (~1100px max-width) ═══════════ */}
       <div style={{
         position: 'relative', zIndex: 110,
-        width: isMobile ? '94%' : 'calc(100% - 220px)',
-        maxWidth: '980px',
+        width: isMobile ? '94%' : 'calc(100% - 120px)',
+        maxWidth: '1100px',
         padding: isMobile ? '1.5rem 1rem 1.2rem' : '1.8rem 2rem 1.5rem',
         margin: '0 auto',
         textAlign: 'center', borderRadius: '24px',
@@ -154,20 +154,12 @@ export function CurtainLaunchScreen() {
           <Users size={isMobile ? 18 : 22} />
         </div>
 
-        {/* Header Logo Row - cleanly formatted */}
+        {/* Header Logo Row - Swapped positions: KEC emblem on left, KECAA logo on right */}
         <div style={{
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          maxWidth: '840px', margin: '0.25rem auto 1rem auto',
+          maxWidth: '960px', margin: '0.25rem auto 1rem auto',
           padding: '0 0.5rem',
         }}>
-          <div style={{
-            padding: isMobile ? '0.3rem 0.6rem' : '0.4rem 1rem',
-            background: '#FFFFFF', borderRadius: '10px',
-            border: '1.5px solid #F4C542', boxShadow: '0 0 12px rgba(244,197,66,0.35)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}>
-            <img src={logoImg} alt="KECAA Logo" style={{ height: isMobile ? '30px' : '40px', width: 'auto', objectFit: 'contain' }} />
-          </div>
           {heroImg && (
             <div style={{
               padding: isMobile ? '0.3rem 0.6rem' : '0.4rem 1rem',
@@ -178,6 +170,14 @@ export function CurtainLaunchScreen() {
               <img src={heroImg} alt="KEC Emblem" style={{ height: isMobile ? '30px' : '40px', width: 'auto', objectFit: 'contain' }} />
             </div>
           )}
+          <div style={{
+            padding: isMobile ? '0.3rem 0.6rem' : '0.4rem 1rem',
+            background: '#FFFFFF', borderRadius: '10px',
+            border: '1.5px solid #F4C542', boxShadow: '0 0 12px rgba(244,197,66,0.35)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}>
+            <img src={logoImg} alt="KECAA Logo" style={{ height: isMobile ? '30px' : '40px', width: 'auto', objectFit: 'contain' }} />
+          </div>
         </div>
 
         {/* ── MAIN CONTENT AREA WITH 6 FEATURE BADGES INSIDE CARD ── */}
