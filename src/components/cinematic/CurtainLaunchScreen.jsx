@@ -221,50 +221,50 @@ export function CurtainLaunchScreen() {
             {/* SIGNIFICANTLY INCREASED LOGO SIZES */}
             <div style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              gap: isMobile ? '1.4rem' : '4rem',
-              marginBottom: '1.8rem',
+              gap: isMobile ? '1.4rem' : '4.2rem',
+              marginBottom: '1.6rem',
             }}>
               {heroImg && (
                 <div style={{
-                  padding: isMobile ? '0.5rem 1.1rem' : '0.9rem 2.4rem',
-                  background: '#FFFFFF', borderRadius: '18px',
-                  border: '3px solid #00F2FE', boxShadow: '0 0 35px rgba(0,242,254,0.65)',
+                  padding: isMobile ? '0.6rem 1.2rem' : '1.1rem 2.8rem',
+                  background: '#FFFFFF', borderRadius: '22px',
+                  border: '3.5px solid #00F2FE', boxShadow: '0 0 40px rgba(0,242,254,0.7)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   transition: 'transform 0.2s ease',
                 }}>
-                  <img src={heroImg} alt="KEC Emblem" style={{ height: isMobile ? '46px' : '82px', width: 'auto', objectFit: 'contain' }} />
+                  <img src={heroImg} alt="KEC Emblem" style={{ height: isMobile ? '52px' : '98px', width: 'auto', objectFit: 'contain' }} />
                 </div>
               )}
               <div style={{
-                padding: isMobile ? '0.5rem 1.1rem' : '0.9rem 2.4rem',
-                background: '#FFFFFF', borderRadius: '18px',
-                border: '3px solid #F4C542', boxShadow: '0 0 35px rgba(244,197,66,0.65)',
+                padding: isMobile ? '0.6rem 1.2rem' : '1.1rem 2.8rem',
+                background: '#FFFFFF', borderRadius: '22px',
+                border: '3.5px solid #F4C542', boxShadow: '0 0 40px rgba(244,197,66,0.7)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 transition: 'transform 0.2s ease',
               }}>
-                <img src={logoImg} alt="KECAA Logo" style={{ height: isMobile ? '46px' : '82px', width: 'auto', objectFit: 'contain' }} />
+                <img src={logoImg} alt="KECAA Logo" style={{ height: isMobile ? '52px' : '98px', width: 'auto', objectFit: 'contain' }} />
               </div>
             </div>
 
-            {/* Feature pills */}
+            {/* Feature pills (reduced font size) */}
             <div style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              flexWrap: 'wrap', gap: isMobile ? '0.5rem' : '1.6rem',
-              color: '#E2E8F0', fontSize: isMobile ? '0.8rem' : '1.05rem',
-              fontWeight: '700', marginBottom: '0.9rem',
+              flexWrap: 'wrap', gap: isMobile ? '0.4rem' : '1.3rem',
+              color: '#E2E8F0', fontSize: isMobile ? '0.74rem' : '0.88rem',
+              fontWeight: '600', marginBottom: '0.65rem',
             }}>
-              <span style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}><Users size={18} color="#8BC53F" /> Stay Connected.</span>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}><Users size={15} color="#8BC53F" /> Stay Connected.</span>
               <span style={{ color: '#334155' }}>|</span>
-              <span style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}><TrendingUp size={18} color="#8BC53F" /> Grow Together.</span>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}><TrendingUp size={15} color="#8BC53F" /> Grow Together.</span>
               <span style={{ color: '#334155' }}>|</span>
-              <span style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}><Heart size={18} color="#8BC53F" /> Make an Impact.</span>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}><Heart size={15} color="#8BC53F" /> Make an Impact.</span>
             </div>
 
-            {/* Tagline */}
+            {/* Tagline (reduced font size) */}
             <div style={{
-              fontSize: isMobile ? '0.8rem' : '1.02rem', color: '#FFFFFF',
-              maxWidth: '650px', margin: '0 auto', lineHeight: 1.55,
-              marginBottom: isMobile ? '1.1rem' : '1.8rem', fontWeight: '500',
+              fontSize: isMobile ? '0.74rem' : '0.86rem', color: '#94A3B8',
+              maxWidth: '560px', margin: '0 auto', lineHeight: 1.5,
+              marginBottom: isMobile ? '1rem' : '1.5rem', fontWeight: '500',
             }}>
               Connecting 35,000+ KEC alumni inspiring, supporting, and shaping a better tomorrow across the globe.
             </div>
