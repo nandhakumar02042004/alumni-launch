@@ -54,7 +54,7 @@ export function CurtainLaunchScreen() {
     <div style={{
       position: 'fixed', inset: 0, zIndex: 9999, background: '#040914',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
-      overflowY: 'auto', overflowX: 'hidden',
+      overflow: 'hidden',
     }}>
       {/* Dots grid */}
       {!isMobile && <div className="bg-dots-grid" />}
@@ -252,54 +252,56 @@ export function CurtainLaunchScreen() {
           A global network of KEC alumni inspiring, supporting and shaping a better tomorrow.
         </div>
 
-        {/* Countdown headline */}
-        <div style={{
-          color: '#8BC53F', fontSize: isMobile ? '0.68rem' : '0.82rem', fontWeight: '700',
-          textTransform: 'uppercase', letterSpacing: '0.08em',
-          marginBottom: '0.55rem',
-          display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem',
-        }}>
-          <span style={{ width: '28px', height: '1px', background: 'linear-gradient(90deg,transparent,#8BC53F)' }} />
-          Launching Your Alumni Portal In
-          <span style={{ width: '28px', height: '1px', background: 'linear-gradient(-90deg,transparent,#8BC53F)' }} />
-        </div>
-
-        {/* ── SINGLE LIVE COUNTDOWN BOX ── */}
-        <div style={{
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          gap: '0', marginBottom: isMobile ? '0.8rem' : '1.2rem',
-        }}>
-          <div style={{
-            background: 'rgba(10,22,47,0.88)',
-            border: '1.5px solid rgba(139,197,63,0.5)',
-            borderRadius: '14px',
-            padding: isMobile ? '0.55rem 1.5rem' : '0.7rem 2rem',
-            boxShadow: '0 0 20px rgba(139,197,63,0.25), inset 0 0 12px rgba(139,197,63,0.08)',
-            display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-            minWidth: isMobile ? '90px' : '110px',
-          }}>
+        {/* Countdown headline + timer box — vanishes when countdown hits 00 */}
+        {countdown > 0 && (
+          <>
             <div style={{
-              fontSize: isMobile ? '1.9rem' : '2.4rem', fontWeight: '900',
-              color: '#8BC53F', lineHeight: 1, letterSpacing: '0.04em',
-              fontVariantNumeric: 'tabular-nums',
-              filter: 'drop-shadow(0 0 10px rgba(139,197,63,0.55))',
+              color: '#8BC53F', fontSize: isMobile ? '0.68rem' : '0.82rem', fontWeight: '700',
+              textTransform: 'uppercase', letterSpacing: '0.08em',
+              marginBottom: '0.55rem',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem',
             }}>
-              {String(countdown).padStart(2, '0')}
+              <span style={{ width: '28px', height: '1px', background: 'linear-gradient(90deg,transparent,#8BC53F)' }} />
+              Launching Your Alumni Portal In
+              <span style={{ width: '28px', height: '1px', background: 'linear-gradient(-90deg,transparent,#8BC53F)' }} />
             </div>
-            <div style={{
-              fontSize: '0.58rem', fontWeight: '800', color: '#8BC53F',
-              textTransform: 'uppercase', letterSpacing: '0.18em', marginTop: '0.3rem',
-            }}>
-              SECONDS
-            </div>
-          </div>
-        </div>
 
-        {/* Launch button or spacer */}
-        {countdown > 0 ? (
-          <div style={{ marginBottom: '0.75rem' }} />
-        ) : (
-          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.75rem' }}>
+            {/* SINGLE LIVE COUNTDOWN BOX */}
+            <div style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              gap: '0', marginBottom: isMobile ? '0.8rem' : '1.2rem',
+            }}>
+              <div style={{
+                background: 'rgba(10,22,47,0.88)',
+                border: '1.5px solid rgba(139,197,63,0.5)',
+                borderRadius: '14px',
+                padding: isMobile ? '0.55rem 1.5rem' : '0.7rem 2rem',
+                boxShadow: '0 0 20px rgba(139,197,63,0.25), inset 0 0 12px rgba(139,197,63,0.08)',
+                display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                minWidth: isMobile ? '90px' : '110px',
+              }}>
+                <div style={{
+                  fontSize: isMobile ? '1.9rem' : '2.4rem', fontWeight: '900',
+                  color: '#8BC53F', lineHeight: 1, letterSpacing: '0.04em',
+                  fontVariantNumeric: 'tabular-nums',
+                  filter: 'drop-shadow(0 0 10px rgba(139,197,63,0.55))',
+                }}>
+                  {String(countdown).padStart(2, '0')}
+                </div>
+                <div style={{
+                  fontSize: '0.58rem', fontWeight: '800', color: '#8BC53F',
+                  textTransform: 'uppercase', letterSpacing: '0.18em', marginTop: '0.3rem',
+                }}>
+                  SECONDS
+                </div>
+              </div>
+            </div>
+          </>
+        )}
+
+        {/* Launch button — appears instantly when countdown hits 00, timer disappears */}
+        {countdown === 0 && (
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: isMobile ? '0.8rem' : '1.2rem' }}>
             <button
               onClick={handleLaunchNowClick}
               style={{
