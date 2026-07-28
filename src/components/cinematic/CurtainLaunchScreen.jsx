@@ -106,9 +106,6 @@ export function CurtainLaunchScreen() {
 
       <div className="spotlight-beam" style={{ zIndex: 15 }} />
 
-      {/* Dynamic Floating Spheres & Particles */}
-      <ParticleCanvas count={isMobile ? 40 : 85} active={curtainState !== 'done'} />
-
       {/* Corner Spark / Star Shower Canvas */}
       <ConfettiCanvas trigger={showSparkShower} />
 
@@ -140,7 +137,7 @@ export function CurtainLaunchScreen() {
 
       {/* ═══════════ MAIN GLASS CARD FULL-SCREEN EXPANDED LAYOUT ═══════════ */}
       <div style={{
-        position: 'relative', zIndex: 110,
+        position: 'relative', zIndex: 110, overflow: 'hidden',
         width: isMobile ? '98%' : '98.5%',
         maxWidth: '98.5%',
         height: isMobile ? 'auto' : 'calc(100vh - 36px)',
@@ -158,6 +155,8 @@ export function CurtainLaunchScreen() {
         transform: curtainState === 'opening' || curtainState === 'closing' || curtainState === 'done' ? 'scale(0.85)' : 'scale(1)',
         transition: 'all 0.6s cubic-bezier(0.4,0,0.2,1)',
       }}>
+        {/* Dynamic Floating Spheres & Particles INSIDE GLASS CARD */}
+        <ParticleCanvas count={isMobile ? 40 : 85} active={curtainState !== 'done'} />
 
         {/* Top center emblem badge */}
         <div style={{
