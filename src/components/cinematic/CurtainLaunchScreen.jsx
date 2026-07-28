@@ -97,7 +97,10 @@ export function CurtainLaunchScreen() {
 
       {/* Bottom wave curves */}
       {curtainState === 'hidden' && (
-      </div>
+        <div className="bg-wave-curves">
+          <div className="bg-wave-line-green" />
+          <div className="bg-wave-line-blue" />
+        </div>
       )}
 
       <div className="spotlight-beam" style={{ zIndex: 15 }} />
