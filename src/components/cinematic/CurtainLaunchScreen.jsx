@@ -187,38 +187,11 @@ export function CurtainLaunchScreen() {
 
           {/* Center Column: Main Title, Info & Countdown */}
           <div style={{ flex: 1, minWidth: 0 }}>
-            {/* Logos centered right above Welcome Back */}
-            <div style={{
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              gap: isMobile ? '1rem' : '2.5rem',
-              marginBottom: '0.8rem',
-              marginTop: '0.2rem',
-            }}>
-              {heroImg && (
-                <div style={{
-                  padding: isMobile ? '0.35rem 0.7rem' : '0.45rem 1.1rem',
-                  background: '#FFFFFF', borderRadius: '12px',
-                  border: '1.5px solid #00F2FE', boxShadow: '0 0 15px rgba(0,242,254,0.4)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                }}>
-                  <img src={heroImg} alt="KEC Emblem" style={{ height: isMobile ? '32px' : '44px', width: 'auto', objectFit: 'contain' }} />
-                </div>
-              )}
-              <div style={{
-                padding: isMobile ? '0.35rem 0.7rem' : '0.45rem 1.1rem',
-                background: '#FFFFFF', borderRadius: '12px',
-                border: '1.5px solid #F4C542', boxShadow: '0 0 15px rgba(244,197,66,0.4)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-              }}>
-                <img src={logoImg} alt="KECAA Logo" style={{ height: isMobile ? '32px' : '44px', width: 'auto', objectFit: 'contain' }} />
-              </div>
-            </div>
-
             {/* Cursive Welcome Back */}
             <div style={{
               fontFamily: "'Dancing Script','Brush Script MT',cursive,Georgia,serif",
               color: '#8BC53F', fontSize: isMobile ? '1.2rem' : '1.75rem',
-              fontWeight: '600', fontStyle: 'italic', marginBottom: '0.3rem',
+              fontWeight: '600', fontStyle: 'italic', marginBottom: '0.8rem',
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.6rem',
             }}>
               <span style={{ width: '35px', height: '1px', background: 'linear-gradient(90deg,transparent,#8BC53F)' }} />
@@ -226,26 +199,33 @@ export function CurtainLaunchScreen() {
               <span style={{ width: '35px', height: '1px', background: 'linear-gradient(-90deg,transparent,#8BC53F)' }} />
             </div>
 
-            {/* Title */}
-            <h1 style={{
-              fontSize: isMobile ? '1.2rem' : '2.05rem', fontWeight: '900',
-              letterSpacing: isMobile ? '0.02em' : '0.04em', lineHeight: 1.15,
-              color: '#FFFFFF', textTransform: 'uppercase', marginBottom: '0.35rem',
-            }}>
-              KONGU ENGINEERING COLLEGE
-            </h1>
-
-            {/* Alumni Association */}
+            {/* Logos in place of college title */}
             <div style={{
-              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.6rem',
-              fontSize: isMobile ? '0.72rem' : '0.92rem', fontWeight: '700',
-              letterSpacing: isMobile ? '0.1em' : '0.22em', color: '#76E4F7',
-              textTransform: 'uppercase', marginBottom: isMobile ? '0.8rem' : '1.2rem',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              gap: isMobile ? '1rem' : '2.8rem',
+              marginBottom: '1.2rem',
             }}>
-              <span style={{ width: '35px', height: '1px', background: '#76E4F7', opacity: 0.7 }} />
-              ALUMNI ASSOCIATION
-              <span style={{ width: '35px', height: '1px', background: '#76E4F7', opacity: 0.7 }} />
+              {heroImg && (
+                <div style={{
+                  padding: isMobile ? '0.35rem 0.7rem' : '0.5rem 1.25rem',
+                  background: '#FFFFFF', borderRadius: '12px',
+                  border: '1.5px solid #00F2FE', boxShadow: '0 0 16px rgba(0,242,254,0.45)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                }}>
+                  <img src={heroImg} alt="KEC Emblem" style={{ height: isMobile ? '32px' : '48px', width: 'auto', objectFit: 'contain' }} />
+                </div>
+              )}
+              <div style={{
+                padding: isMobile ? '0.35rem 0.7rem' : '0.5rem 1.25rem',
+                background: '#FFFFFF', borderRadius: '12px',
+                border: '1.5px solid #F4C542', boxShadow: '0 0 16px rgba(244,197,66,0.45)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                <img src={logoImg} alt="KECAA Logo" style={{ height: isMobile ? '32px' : '48px', width: 'auto', objectFit: 'contain' }} />
+              </div>
             </div>
+
+
 
             {/* Feature pills */}
             <div style={{
