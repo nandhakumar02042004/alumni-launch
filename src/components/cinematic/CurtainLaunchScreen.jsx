@@ -155,8 +155,8 @@ export function CurtainLaunchScreen() {
         transform: curtainState === 'opening' || curtainState === 'closing' || curtainState === 'done' ? 'scale(0.85)' : 'scale(1)',
         transition: 'all 0.6s cubic-bezier(0.4,0,0.2,1)',
       }}>
-        {/* Dynamic Floating Spheres & Particles INSIDE GLASS CARD */}
-        <ParticleCanvas count={isMobile ? 40 : 85} active={curtainState !== 'done'} />
+        {/* Subtle Floating Spheres & Particles INSIDE GLASS CARD */}
+        <ParticleCanvas count={isMobile ? 18 : 28} active={curtainState !== 'done'} />
 
         {/* Top center emblem badge */}
         <div style={{
@@ -220,28 +220,28 @@ export function CurtainLaunchScreen() {
             {/* SIGNIFICANTLY INCREASED LOGO SIZES */}
             <div style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              gap: isMobile ? '1.4rem' : '4.2rem',
-              marginBottom: '1.6rem',
+              gap: isMobile ? '1.4rem' : '4.5rem',
+              marginBottom: '1.8rem',
             }}>
               {heroImg && (
                 <div style={{
-                  padding: isMobile ? '0.6rem 1.2rem' : '1.1rem 2.8rem',
-                  background: '#FFFFFF', borderRadius: '22px',
-                  border: '3.5px solid #00F2FE', boxShadow: '0 0 40px rgba(0,242,254,0.7)',
+                  padding: isMobile ? '0.7rem 1.4rem' : '1.2rem 3.2rem',
+                  background: '#FFFFFF', borderRadius: '24px',
+                  border: '4px solid #00F2FE', boxShadow: '0 0 45px rgba(0,242,254,0.75)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   transition: 'transform 0.2s ease',
                 }}>
-                  <img src={heroImg} alt="KEC Emblem" style={{ height: isMobile ? '52px' : '98px', width: 'auto', objectFit: 'contain' }} />
+                  <img src={heroImg} alt="KEC Emblem" style={{ height: isMobile ? '58px' : '118px', width: 'auto', objectFit: 'contain' }} />
                 </div>
               )}
               <div style={{
-                padding: isMobile ? '0.6rem 1.2rem' : '1.1rem 2.8rem',
-                background: '#FFFFFF', borderRadius: '22px',
-                border: '3.5px solid #F4C542', boxShadow: '0 0 40px rgba(244,197,66,0.7)',
+                padding: isMobile ? '0.7rem 1.4rem' : '1.2rem 3.2rem',
+                background: '#FFFFFF', borderRadius: '24px',
+                border: '4px solid #F4C542', boxShadow: '0 0 45px rgba(244,197,66,0.75)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 transition: 'transform 0.2s ease',
               }}>
-                <img src={logoImg} alt="KECAA Logo" style={{ height: isMobile ? '52px' : '98px', width: 'auto', objectFit: 'contain' }} />
+                <img src={logoImg} alt="KECAA Logo" style={{ height: isMobile ? '58px' : '118px', width: 'auto', objectFit: 'contain' }} />
               </div>
             </div>
 

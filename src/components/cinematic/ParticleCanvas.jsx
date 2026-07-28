@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-export function ParticleCanvas({ count = 75, active = true }) {
+export function ParticleCanvas({ count = 28, active = true }) {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -21,32 +21,32 @@ export function ParticleCanvas({ count = 75, active = true }) {
 
     const colors = ['#00F2FE', '#8BC53F', '#F4C542', '#A855F7', '#38BDF8'];
 
-    // Dynamic glowing floating spheres & particles inside card
+    // Subtle glowing floating spheres & particles inside card
     const balls = Array.from({ length: count }).map(() => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      radius: Math.random() * 4.5 + 2,
+      radius: Math.random() * 3.5 + 1.5,
       color: colors[Math.floor(Math.random() * colors.length)],
-      alpha: Math.random() * 0.65 + 0.25,
-      speedY: -(Math.random() * 0.7 + 0.2),
-      speedX: (Math.random() - 0.5) * 0.6,
-      pulseSpeed: Math.random() * 0.03 + 0.01,
+      alpha: Math.random() * 0.35 + 0.12, // Soft, subtle translucency
+      speedY: -(Math.random() * 0.5 + 0.15),
+      speedX: (Math.random() - 0.5) * 0.4,
+      pulseSpeed: Math.random() * 0.02 + 0.008,
       angle: Math.random() * Math.PI * 2,
-      wobble: Math.random() * 1.5 + 0.5,
+      wobble: Math.random() * 1.2 + 0.4,
     }));
 
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      const time = Date.now() * 0.002;
+      const time = Date.now() * 0.0018;
 
       balls.forEach((b) => {
         b.y += b.speedY;
-        b.x += b.speedX + Math.sin(time + b.angle) * b.wobble * 0.35;
+        b.x += b.speedX + Math.sin(time + b.angle) * b.wobble * 0.3;
 
         b.alpha += Math.sin(time * 2 + b.angle) * b.pulseSpeed;
-        if (b.alpha < 0.2) b.alpha = 0.2;
-        if (b.alpha > 0.85) b.alpha = 0.85;
+        if (b.alpha < 0.12) b.alpha = 0.12;
+        if (b.alpha > 0.45) b.alpha = 0.45;
 
         if (b.y < -10) {
           b.y = height + 10;
@@ -59,7 +59,7 @@ export function ParticleCanvas({ count = 75, active = true }) {
         ctx.globalAlpha = b.alpha;
         ctx.fillStyle = b.color;
         ctx.shadowColor = b.color;
-        ctx.shadowBlur = b.radius * 4;
+        ctx.shadowBlur = b.radius * 3;
         ctx.fill();
         ctx.restore();
       });
