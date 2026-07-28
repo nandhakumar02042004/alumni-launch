@@ -12,7 +12,7 @@ const BG_IMAGES = [bangaloreImg, cbeImg, campusImg];
 
 export function CurtainLaunchScreen() {
   const [countdown, setCountdown] = useState(30);
-  const [curtainState, setCurtainState] = useState('hidden');
+  const [curtainState, setCurtainState] = useState('hidden'); // 'hidden' | 'closing' | 'opening' | 'done'
   const [showSparkShower, setShowSparkShower] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
   const [bgIndex, setBgIndex] = useState(0);
@@ -41,9 +41,9 @@ export function CurtainLaunchScreen() {
     return () => clearInterval(timer);
   }, []);
 
-  // When user clicks Launch: shoot corner spark shower first, then part red velvet curtains!
+  // When user clicks Launch: shoot spark shower, then part red velvet curtains to reveal live website directly!
   const handleLaunchNowClick = () => {
-    setShowSparkShower(true); // Left & Right corner spark shower burst!
+    setShowSparkShower(true);
 
     setTimeout(() => {
       setCurtainState('closing');
@@ -52,7 +52,7 @@ export function CurtainLaunchScreen() {
         setTimeout(() => {
           setCurtainState('done');
           window.location.href = 'https://alumni.kongu.edu/';
-        }, 1900);
+        }, 2200);
       }, 900);
     }, 350);
   };
@@ -75,37 +75,58 @@ export function CurtainLaunchScreen() {
       display: 'flex', alignItems: 'center', justifyContent: 'center',
       overflow: 'hidden',
     }}>
+      {/* ── LIVE WEBSITE REVEALED DIRECTLY BEHIND OPENING CURTAINS ── */}
+      {curtainState !== 'hidden' && (
+        <iframe
+          src="https://alumni.kongu.edu/"
+          title="KECAA Live Alumni Portal"
+          style={{
+            position: 'fixed',
+            inset: 0,
+            width: '100vw',
+            height: '100vh',
+            border: 'none',
+            zIndex: 100,
+            background: '#FFFFFF',
+          }}
+        />
+      )}
+
       {/* Dots grid */}
-      {!isMobile && <div className="bg-dots-grid" />}
+      {!isMobile && curtainState === 'hidden' && <div className="bg-dots-grid" />}
 
       {/* Bottom wave curves */}
-      <div className="bg-wave-curves">
-        <div className="bg-wave-line-green" />
-        <div className="bg-wave-line-blue" />
-      </div>
+      {curtainState === 'hidden' && (
+        <div className="bg-wave-curves">
+          <div className="bg-wave-line-green" />
+          <div className="bg-wave-line-blue" />
+        </div>
+      )}
 
-      {/* ── Full-screen crossfading background slideshow ── */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 4, pointerEvents: 'none' }}>
-        {BG_IMAGES.map((img, idx) => (
-          <div
-            key={idx}
-            style={{
-              position: 'absolute', inset: 0,
-              backgroundImage: `url(${img})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              opacity: idx === bgIndex ? 0.32 : 0,
-              transition: 'opacity 1.5s ease-in-out',
-              filter: 'brightness(0.6) contrast(1.05)',
-            }}
-          />
-        ))}
-        {/* Gradient vignette overlay */}
-        <div style={{
-          position: 'absolute', inset: 0,
-          background: 'radial-gradient(ellipse at center, rgba(4,9,20,0.35) 0%, rgba(4,9,20,0.75) 70%, rgba(4,9,20,0.92) 100%)',
-        }} />
-      </div>
+      {/* ── Full-screen crossfading background slideshow (hidden during curtain opening) ── */}
+      {curtainState === 'hidden' && (
+        <div style={{ position: 'absolute', inset: 0, zIndex: 4, pointerEvents: 'none' }}>
+          {BG_IMAGES.map((img, idx) => (
+            <div
+              key={idx}
+              style={{
+                position: 'absolute', inset: 0,
+                backgroundImage: `url(${img})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                opacity: idx === bgIndex ? 0.32 : 0,
+                transition: 'opacity 1.5s ease-in-out',
+                filter: 'brightness(0.6) contrast(1.05)',
+              }}
+            />
+          ))}
+          {/* Gradient vignette overlay */}
+          <div style={{
+            position: 'absolute', inset: 0,
+            background: 'radial-gradient(ellipse at center, rgba(4,9,20,0.35) 0%, rgba(4,9,20,0.75) 70%, rgba(4,9,20,0.92) 100%)',
+          }} />
+        </div>
+      )}
 
       <div className="spotlight-beam" style={{ zIndex: 15 }} />
 
@@ -115,21 +136,25 @@ export function CurtainLaunchScreen() {
       {/* Corner Spark / Star Shower Canvas */}
       <ConfettiCanvas trigger={showSparkShower} />
 
-      {/* Theatre Curtains */}
+      {/* ── RED VELVET THEATRE CURTAINS (Z-INDEX 200 ABOVE WEBSITE) ── */}
       {curtainState !== 'hidden' && (
         <>
-          <div className="curtain-valance"><div className="curtain-valance-fringe" /></div>
+          <div className="curtain-valance" style={{ zIndex: 210 }}>
+            <div className="curtain-valance-fringe" />
+          </div>
           <div className="curtain-panel curtain-left" style={{
+            zIndex: 205,
             transform: curtainState === 'closing' ? 'translateX(0%)' : 'translateX(-102%)',
             transition: curtainState === 'closing' ? 'transform 0.85s cubic-bezier(0.77,0,0.175,1)' : 'transform 1.9s cubic-bezier(0.77,0,0.175,1)',
           }} />
           <div className="curtain-panel curtain-right" style={{
+            zIndex: 205,
             transform: curtainState === 'closing' ? 'translateX(0%)' : 'translateX(102%)',
             transition: curtainState === 'closing' ? 'transform 0.85s cubic-bezier(0.77,0,0.175,1)' : 'transform 1.9s cubic-bezier(0.77,0,0.175,1)',
           }} />
           {curtainState === 'opening' && (
             <div style={{
-              position: 'absolute', inset: 0, zIndex: 195, pointerEvents: 'none',
+              position: 'absolute', inset: 0, zIndex: 220, pointerEvents: 'none',
               background: 'radial-gradient(circle at center, rgba(244,197,66,0.9) 0%, rgba(139,197,63,0.55) 40%, transparent 80%)',
               animation: 'pulseSpotlight 1.8s ease-out forwards',
             }} />
@@ -151,8 +176,8 @@ export function CurtainLaunchScreen() {
         backgroundImage: 'linear-gradient(rgba(8,16,34,0.95),rgba(8,16,34,0.95)), linear-gradient(135deg,#8BC53F 0%,#00F2FE 45%,#0099FF 75%,#8BC53F 100%)',
         backgroundOrigin: 'border-box', backgroundClip: 'padding-box, border-box',
         boxShadow: '0 0 65px rgba(0,242,254,0.48), 0 0 30px rgba(139,197,63,0.38), 0 30px 75px rgba(0,0,0,0.92)',
-        opacity: curtainState === 'opening' || curtainState === 'done' ? 0 : 1,
-        transform: curtainState === 'opening' || curtainState === 'done' ? 'scale(0.85)' : 'scale(1)',
+        opacity: curtainState === 'opening' || curtainState === 'closing' || curtainState === 'done' ? 0 : 1,
+        transform: curtainState === 'opening' || curtainState === 'closing' || curtainState === 'done' ? 'scale(0.85)' : 'scale(1)',
         transition: 'all 0.6s cubic-bezier(0.4,0,0.2,1)',
       }}>
 
@@ -399,15 +424,17 @@ export function CurtainLaunchScreen() {
       </div>
 
       {/* Bottom footer */}
-      <div style={{
-        position: 'fixed', bottom: isMobile ? '0.5rem' : '1.25rem',
-        left: 0, right: 0, zIndex: 110, textAlign: 'center',
-        fontSize: isMobile ? '0.55rem' : '0.85rem', fontWeight: '700',
-        letterSpacing: isMobile ? '0.18em' : '0.35em',
-        color: '#475569', textTransform: 'uppercase', pointerEvents: 'none',
-      }}>
-        CONNECT &nbsp;•&nbsp; COLLABORATE &nbsp;•&nbsp; CONTRIBUTE
-      </div>
+      {curtainState === 'hidden' && (
+        <div style={{
+          position: 'fixed', bottom: isMobile ? '0.5rem' : '1.25rem',
+          left: 0, right: 0, zIndex: 110, textAlign: 'center',
+          fontSize: isMobile ? '0.55rem' : '0.85rem', fontWeight: '700',
+          letterSpacing: isMobile ? '0.18em' : '0.35em',
+          color: '#475569', textTransform: 'uppercase', pointerEvents: 'none',
+        }}>
+          CONNECT &nbsp;•&nbsp; COLLABORATE &nbsp;•&nbsp; CONTRIBUTE
+        </div>
+      )}
     </div>
   );
 }
