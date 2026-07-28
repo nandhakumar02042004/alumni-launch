@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ParticleCanvas } from './ParticleCanvas';
-import { ChevronRight, Rocket, ShieldCheck, Users, GraduationCap, Globe, Briefcase, Handshake, Calendar, TrendingUp, Heart } from 'lucide-react';
+import { ConfettiCanvas } from './ConfettiCanvas';
+import { ChevronRight, Rocket, ShieldCheck, Users, GraduationCap, Globe, Briefcase, Handshake, Calendar, TrendingUp, Heart, Sparkles, Network } from 'lucide-react';
 import logoImg from '../../assets/Logo.png';
 import heroImg from '../../assets/image.png';
 import bangaloreImg from '../../assets/BANGALORE1.jpg';
@@ -12,6 +13,7 @@ const BG_IMAGES = [bangaloreImg, cbeImg, campusImg];
 export function CurtainLaunchScreen() {
   const [countdown, setCountdown] = useState(30);
   const [curtainState, setCurtainState] = useState('hidden');
+  const [showSparkShower, setShowSparkShower] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
   const [bgIndex, setBgIndex] = useState(0);
 
@@ -39,15 +41,20 @@ export function CurtainLaunchScreen() {
     return () => clearInterval(timer);
   }, []);
 
+  // When user clicks Launch: shoot corner spark shower first, then part red velvet curtains!
   const handleLaunchNowClick = () => {
-    setCurtainState('closing');
+    setShowSparkShower(true); // Left & Right corner spark shower burst!
+
     setTimeout(() => {
-      setCurtainState('opening');
+      setCurtainState('closing');
       setTimeout(() => {
-        setCurtainState('done');
-        window.location.href = 'https://alumni.kongu.edu/';
-      }, 1900);
-    }, 900);
+        setCurtainState('opening');
+        setTimeout(() => {
+          setCurtainState('done');
+          window.location.href = 'https://alumni.kongu.edu/';
+        }, 1900);
+      }, 900);
+    }, 350);
   };
 
   const leftBadges = [
@@ -101,7 +108,12 @@ export function CurtainLaunchScreen() {
       </div>
 
       <div className="spotlight-beam" style={{ zIndex: 15 }} />
+
+      {/* Dynamic Floating Spheres & Particles */}
       <ParticleCanvas count={isMobile ? 40 : 85} active={curtainState !== 'done'} />
+
+      {/* Corner Spark / Star Shower Canvas */}
+      <ConfettiCanvas trigger={showSparkShower} />
 
       {/* Theatre Curtains */}
       {curtainState !== 'hidden' && (
@@ -125,7 +137,7 @@ export function CurtainLaunchScreen() {
         </>
       )}
 
-      {/* ═══════════ MAIN GLASS CARD: EXPANDED TOP/LEFT/RIGHT, BOTTOM TIGHT ═══════════ */}
+      {/* ═══════════ MAIN GLASS CARD LARGE EXPANDED LAYOUT (~1380px max-width) ═══════════ */}
       <div style={{
         position: 'relative', zIndex: 110,
         width: isMobile ? '96%' : 'calc(100% - 40px)',
@@ -188,12 +200,26 @@ export function CurtainLaunchScreen() {
 
           {/* Center Column: Main Title, Info & Countdown */}
           <div style={{ flex: 1, minWidth: 0 }}>
+
+            {/* Glowing Alumni Connections Header Badge */}
+            <div style={{
+              display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+              padding: '0.35rem 1rem', borderRadius: '9999px',
+              background: 'rgba(0,242,254,0.08)', border: '1px solid rgba(0,242,254,0.3)',
+              color: '#00F2FE', fontSize: isMobile ? '0.65rem' : '0.76rem',
+              fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase',
+              marginBottom: '0.75rem', boxShadow: '0 0 15px rgba(0,242,254,0.2)',
+            }}>
+              <Network size={14} color="#8BC53F" />
+              <span>KONGU ENGINEERING COLLEGE ALUMNI NETWORK</span>
+              <Sparkles size={14} color="#F4C542" />
+            </div>
+
             {/* Cursive Welcome Back */}
             <div style={{
               fontFamily: "'Dancing Script','Brush Script MT',cursive,Georgia,serif",
-              color: '#8BC53F', fontSize: isMobile ? '1.15rem' : '1.65rem',
-              fontWeight: '600', fontStyle: 'italic', marginBottom: '0.4rem',
-              marginTop: '0rem',
+              color: '#8BC53F', fontSize: isMobile ? '1.2rem' : '1.8rem',
+              fontWeight: '600', fontStyle: 'italic', marginBottom: '0.8rem',
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.6rem',
             }}>
               <span style={{ width: '35px', height: '1px', background: 'linear-gradient(90deg,transparent,#8BC53F)' }} />
@@ -201,33 +227,33 @@ export function CurtainLaunchScreen() {
               <span style={{ width: '35px', height: '1px', background: 'linear-gradient(-90deg,transparent,#8BC53F)' }} />
             </div>
 
-            {/* Logos in place of college title */}
+            {/* SLIGHTLY INCREASED LOGO SIZES */}
             <div style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              gap: isMobile ? '1rem' : '2.8rem',
-              marginBottom: '1.2rem',
+              gap: isMobile ? '1.2rem' : '3.2rem',
+              marginBottom: '1.4rem',
             }}>
               {heroImg && (
                 <div style={{
-                  padding: isMobile ? '0.35rem 0.7rem' : '0.5rem 1.25rem',
-                  background: '#FFFFFF', borderRadius: '12px',
-                  border: '1.5px solid #00F2FE', boxShadow: '0 0 16px rgba(0,242,254,0.45)',
+                  padding: isMobile ? '0.4rem 0.8rem' : '0.65rem 1.5rem',
+                  background: '#FFFFFF', borderRadius: '14px',
+                  border: '2px solid #00F2FE', boxShadow: '0 0 22px rgba(0,242,254,0.5)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  transition: 'transform 0.2s ease',
                 }}>
-                  <img src={heroImg} alt="KEC Emblem" style={{ height: isMobile ? '32px' : '48px', width: 'auto', objectFit: 'contain' }} />
+                  <img src={heroImg} alt="KEC Emblem" style={{ height: isMobile ? '36px' : '58px', width: 'auto', objectFit: 'contain' }} />
                 </div>
               )}
               <div style={{
-                padding: isMobile ? '0.35rem 0.7rem' : '0.5rem 1.25rem',
-                background: '#FFFFFF', borderRadius: '12px',
-                border: '1.5px solid #F4C542', boxShadow: '0 0 16px rgba(244,197,66,0.45)',
+                padding: isMobile ? '0.4rem 0.8rem' : '0.65rem 1.5rem',
+                background: '#FFFFFF', borderRadius: '14px',
+                border: '2px solid #F4C542', boxShadow: '0 0 22px rgba(244,197,66,0.5)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
+                transition: 'transform 0.2s ease',
               }}>
-                <img src={logoImg} alt="KECAA Logo" style={{ height: isMobile ? '32px' : '48px', width: 'auto', objectFit: 'contain' }} />
+                <img src={logoImg} alt="KECAA Logo" style={{ height: isMobile ? '36px' : '58px', width: 'auto', objectFit: 'contain' }} />
               </div>
             </div>
-
-
 
             {/* Feature pills */}
             <div style={{
@@ -246,13 +272,13 @@ export function CurtainLaunchScreen() {
             {/* Tagline */}
             <div style={{
               fontSize: isMobile ? '0.76rem' : '0.88rem', color: '#FFFFFF',
-              maxWidth: '480px', margin: '0 auto', lineHeight: 1.45,
+              maxWidth: '520px', margin: '0 auto', lineHeight: 1.45,
               marginBottom: isMobile ? '0.9rem' : '1.4rem',
             }}>
-              A global network of KEC alumni inspiring, supporting and shaping a better tomorrow.
+              Connecting 35,000+ KEC alumni inspiring, supporting, and shaping a better tomorrow across the globe.
             </div>
 
-            {/* Fixed-Height Action Slot: Card border line never shifts when switching from countdown to button */}
+            {/* Fixed-Height Action Slot */}
             <div style={{
               minHeight: isMobile ? '110px' : '135px',
               display: 'flex',
@@ -305,7 +331,7 @@ export function CurtainLaunchScreen() {
                   </div>
                 </>
               ) : (
-                /* Launch button — occupies exact same height slot so border line never moves */
+                /* Launch button */
                 <button
                   onClick={handleLaunchNowClick}
                   style={{

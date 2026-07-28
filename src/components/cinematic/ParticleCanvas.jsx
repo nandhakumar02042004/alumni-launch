@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-export function ParticleCanvas({ count = 65, active = true }) {
+export function ParticleCanvas({ count = 75, active = true }) {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -18,41 +18,49 @@ export function ParticleCanvas({ count = 65, active = true }) {
     };
     window.addEventListener('resize', handleResize);
 
-    const particles = Array.from({ length: count }).map(() => ({
+    const colors = ['#00F2FE', '#8BC53F', '#F4C542', '#A855F7', '#38BDF8'];
+
+    // Dynamic glowing floating spheres & particles
+    const balls = Array.from({ length: count }).map(() => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      radius: Math.random() * 2.5 + 1,
-      color: Math.random() > 0.3 ? '#F4C542' : '#8BC53F',
-      alpha: Math.random() * 0.7 + 0.3,
-      speedY: -(Math.random() * 0.8 + 0.2),
-      speedX: (Math.random() - 0.5) * 0.5,
-      pulse: Math.random() * 0.05 + 0.01,
+      radius: Math.random() * 4 + 1.5,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      alpha: Math.random() * 0.65 + 0.25,
+      speedY: -(Math.random() * 0.7 + 0.2),
+      speedX: (Math.random() - 0.5) * 0.6,
+      pulseSpeed: Math.random() * 0.03 + 0.01,
+      angle: Math.random() * Math.PI * 2,
+      wobble: Math.random() * 1.5 + 0.5,
     }));
 
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      particles.forEach((p) => {
-        p.y += p.speedY;
-        p.x += p.speedX;
+      const time = Date.now() * 0.002;
 
-        p.alpha += Math.sin(Date.now() * 0.003) * p.pulse;
-        if (p.alpha < 0.2) p.alpha = 0.2;
-        if (p.alpha > 0.9) p.alpha = 0.9;
+      balls.forEach((b) => {
+        b.y += b.speedY;
+        b.x += b.speedX + Math.sin(time + b.angle) * b.wobble * 0.35;
 
-        if (p.y < 0) {
-          p.y = height + 10;
-          p.x = Math.random() * width;
+        b.alpha += Math.sin(time * 2 + b.angle) * b.pulseSpeed;
+        if (b.alpha < 0.2) b.alpha = 0.2;
+        if (b.alpha > 0.85) b.alpha = 0.85;
+
+        if (b.y < -10) {
+          b.y = height + 10;
+          b.x = Math.random() * width;
         }
 
+        ctx.save();
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = p.color;
-        ctx.globalAlpha = p.alpha;
-        ctx.shadowColor = p.color;
-        ctx.shadowBlur = 12;
+        ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
+        ctx.globalAlpha = b.alpha;
+        ctx.fillStyle = b.color;
+        ctx.shadowColor = b.color;
+        ctx.shadowBlur = b.radius * 4;
         ctx.fill();
-        ctx.globalAlpha = 1;
+        ctx.restore();
       });
 
       if (active) {
