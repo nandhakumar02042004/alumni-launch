@@ -194,41 +194,6 @@ export function CurtainLaunchScreen() {
 
 
 
-        {/* ── PRECISION ARROW CONNECTIONS FROM LOGO CENTER TO FEATURE BALL CENTERS ── */}
-        {!isMobile && (
-          <svg
-            viewBox="0 0 1200 500"
-            preserveAspectRatio="none"
-            style={{
-              position: 'absolute', inset: 0, width: '100%', height: '100%',
-              pointerEvents: 'none', zIndex: 2, opacity: 0.65,
-            }}
-          >
-            <defs>
-              <marker id="arrow-cyan-ball" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M 0 1 L 9 5 L 0 9 z" fill="#00F2FE" />
-              </marker>
-              <marker id="arrow-gold-ball" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M 0 1 L 9 5 L 0 9 z" fill="#F4C542" />
-              </marker>
-            </defs>
-
-            {/* Left side: Arrow lines starting from Left KEC Logo Center (x=430, y=145) to 3 Left Ball Centers */}
-            <line x1="430" y1="145" x2="105" y2="105" stroke="#00F2FE" strokeWidth="2" strokeDasharray="5 4" markerEnd="url(#arrow-cyan-ball)" />
-            <line x1="430" y1="145" x2="105" y2="245" stroke="#8BC53F" strokeWidth="2" strokeDasharray="5 4" markerEnd="url(#arrow-cyan-ball)" />
-            <line x1="430" y1="145" x2="105" y2="385" stroke="#A855F7" strokeWidth="2" strokeDasharray="5 4" markerEnd="url(#arrow-cyan-ball)" />
-
-            {/* Right side: Arrow lines starting from Right KECAA Logo Center (x=770, y=145) to 3 Right Ball Centers */}
-            <line x1="770" y1="145" x2="1095" y2="105" stroke="#8BC53F" strokeWidth="2" strokeDasharray="5 4" markerEnd="url(#arrow-gold-ball)" />
-            <line x1="770" y1="145" x2="1095" y2="245" stroke="#00F2FE" strokeWidth="2" strokeDasharray="5 4" markerEnd="url(#arrow-gold-ball)" />
-            <line x1="770" y1="145" x2="1095" y2="385" stroke="#A855F7" strokeWidth="2" strokeDasharray="5 4" markerEnd="url(#arrow-gold-ball)" />
-
-            {/* Glowing origin dots on logo centers */}
-            <circle cx="430" cy="145" r="4.5" fill="#00F2FE" />
-            <circle cx="770" cy="145" r="4.5" fill="#F4C542" />
-          </svg>
-        )}
-
         {/* ── MAIN CONTENT AREA WITH 6 FEATURE BADGES INSIDE CARD ── */}
         <div style={{
           display: 'flex',
