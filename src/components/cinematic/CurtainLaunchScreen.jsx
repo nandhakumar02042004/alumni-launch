@@ -130,7 +130,7 @@ export function CurtainLaunchScreen() {
         position: 'relative', zIndex: 110,
         width: isMobile ? '96%' : 'calc(100% - 40px)',
         maxWidth: '1380px',
-        padding: isMobile ? '1.8rem 1rem 0.8rem' : '2.8rem 3.5rem 1rem',
+        padding: isMobile ? '1.1rem 1rem 0.8rem' : '1.4rem 3.5rem 1rem',
         margin: '0 auto',
         textAlign: 'center', borderRadius: '28px',
         background: 'rgba(8,16,34,0.94)', backdropFilter: 'blur(28px)', WebkitBackdropFilter: 'blur(28px)',
@@ -190,8 +190,9 @@ export function CurtainLaunchScreen() {
             {/* Cursive Welcome Back */}
             <div style={{
               fontFamily: "'Dancing Script','Brush Script MT',cursive,Georgia,serif",
-              color: '#8BC53F', fontSize: isMobile ? '1.2rem' : '1.75rem',
-              fontWeight: '600', fontStyle: 'italic', marginBottom: '0.8rem',
+              color: '#8BC53F', fontSize: isMobile ? '1.15rem' : '1.65rem',
+              fontWeight: '600', fontStyle: 'italic', marginBottom: '0.5rem',
+              marginTop: '0.2rem',
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.6rem',
             }}>
               <span style={{ width: '35px', height: '1px', background: 'linear-gradient(90deg,transparent,#8BC53F)' }} />
