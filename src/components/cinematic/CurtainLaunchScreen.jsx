@@ -196,34 +196,34 @@ export function CurtainLaunchScreen() {
           {/* Center Column: Main Title, Info & Countdown */}
           <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
 
-            {/* Cursive Welcome Back (Increased font size) */}
+            {/* Cursive Welcome Back */}
             <div style={{
               fontFamily: "'Dancing Script','Brush Script MT',cursive,Georgia,serif",
-              color: '#8BC53F', fontSize: isMobile ? '1.8rem' : '3.2rem',
-              fontWeight: '700', fontStyle: 'italic', marginBottom: '1.2rem',
-              textShadow: '0 0 25px rgba(139,197,63,0.55)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem',
+              color: '#8BC53F', fontSize: isMobile ? '1.4rem' : '2.4rem',
+              fontWeight: '700', fontStyle: 'italic', marginBottom: '1.1rem',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.8rem',
             }}>
-              <span style={{ width: '55px', height: '2px', background: 'linear-gradient(90deg,transparent,#8BC53F)' }} />
+              <span style={{ width: '45px', height: '1.5px', background: 'linear-gradient(90deg,transparent,#8BC53F)' }} />
               Welcome Back
-              <span style={{ width: '55px', height: '2px', background: 'linear-gradient(-90deg,transparent,#8BC53F)' }} />
+              <span style={{ width: '45px', height: '1.5px', background: 'linear-gradient(-90deg,transparent,#8BC53F)' }} />
             </div>
 
-            {/* FLUID & FLEXIBLE LOGO CONTAINERS (100% UNCROPPED FOR ALL SCREENS & 4K) */}
+            {/* ALWAYS SIDE-BY-SIDE 1-ROW LOGO CONTAINERS (NEVER WRAPS VERTICALLY) */}
             <div style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              gap: isMobile ? '1rem' : '3.5rem',
-              marginBottom: '1.5rem', flexWrap: 'wrap',
+              flexDirection: 'row', flexWrap: 'nowrap',
+              gap: 'clamp(0.8rem, 2.5vw, 3rem)',
+              marginBottom: 'clamp(0.8rem, 1.5vh, 1.5rem)',
+              width: '100%', maxWidth: '900px', margin: '0 auto clamp(0.8rem, 1.5vh, 1.5rem)',
             }}>
               {heroImg && (
                 <div style={{
-                  padding: isMobile ? '0.6rem 1.2rem' : '1.1rem 3rem',
-                  minWidth: isMobile ? '160px' : '320px',
-                  maxWidth: '440px',
-                  minHeight: isMobile ? '70px' : '140px',
-                  maxHeight: isMobile ? '100px' : '180px',
-                  background: '#FFFFFF', borderRadius: '24px',
-                  border: '4px solid #00F2FE', boxShadow: '0 0 50px rgba(0,242,254,0.75)',
+                  flex: '1 1 0px',
+                  minWidth: 0,
+                  maxWidth: '420px',
+                  padding: 'clamp(0.5rem, 1.2vw, 1.1rem) clamp(0.8rem, 2vw, 2.4rem)',
+                  background: '#FFFFFF', borderRadius: '22px',
+                  border: '3.5px solid #00F2FE', boxShadow: '0 0 40px rgba(0,242,254,0.7)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   transition: 'all 0.2s ease',
                 }}>
@@ -231,7 +231,7 @@ export function CurtainLaunchScreen() {
                     src={heroImg}
                     alt="KEC Emblem"
                     style={{
-                      maxHeight: isMobile ? '60px' : '140px',
+                      height: 'clamp(50px, 9vw, 125px)',
                       maxWidth: '100%',
                       width: 'auto',
                       objectFit: 'contain',
@@ -241,13 +241,12 @@ export function CurtainLaunchScreen() {
                 </div>
               )}
               <div style={{
-                padding: isMobile ? '0.6rem 1.2rem' : '1.1rem 3rem',
-                minWidth: isMobile ? '160px' : '320px',
-                maxWidth: '440px',
-                minHeight: isMobile ? '70px' : '140px',
-                maxHeight: isMobile ? '100px' : '180px',
-                background: '#FFFFFF', borderRadius: '24px',
-                border: '4px solid #F4C542', boxShadow: '0 0 50px rgba(244,197,66,0.75)',
+                flex: '1 1 0px',
+                minWidth: 0,
+                maxWidth: '420px',
+                padding: 'clamp(0.5rem, 1.2vw, 1.1rem) clamp(0.8rem, 2vw, 2.4rem)',
+                background: '#FFFFFF', borderRadius: '22px',
+                border: '3.5px solid #F4C542', boxShadow: '0 0 40px rgba(244,197,66,0.7)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 transition: 'all 0.2s ease',
               }}>
@@ -255,7 +254,7 @@ export function CurtainLaunchScreen() {
                   src={logoImg}
                   alt="KECAA Logo"
                   style={{
-                    maxHeight: isMobile ? '60px' : '140px',
+                    height: 'clamp(50px, 9vw, 125px)',
                     maxWidth: '100%',
                     width: 'auto',
                     objectFit: 'contain',
