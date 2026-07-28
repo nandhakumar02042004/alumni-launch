@@ -192,40 +192,7 @@ export function CurtainLaunchScreen() {
           <Users size={isMobile ? 20 : 24} />
         </div>
 
-        {/* ── ARROW CONNECTIONS STARTING DIRECTLY FROM THE LOGOS TO THE 3 BADGES ── */}
-        {!isMobile && (
-          <svg
-            viewBox="0 0 1000 500"
-            preserveAspectRatio="none"
-            style={{
-              position: 'absolute', inset: 0, width: '100%', height: '100%',
-              pointerEvents: 'none', zIndex: 2, opacity: 0.75,
-            }}
-          >
-            <defs>
-              <marker id="arrow-cyan" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="#00F2FE" />
-              </marker>
-              <marker id="arrow-gold" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="#F4C542" />
-              </marker>
-            </defs>
 
-            {/* Left side: Arrow lines starting from Left KEC Logo (x=330, y=140) pointing to Left 3 Badges */}
-            <line x1="320" y1="140" x2="135" y2="140" stroke="#00F2FE" strokeWidth="2" strokeDasharray="6 4" markerEnd="url(#arrow-cyan)" />
-            <line x1="320" y1="140" x2="135" y2="265" stroke="#8BC53F" strokeWidth="2" strokeDasharray="6 4" markerEnd="url(#arrow-cyan)" />
-            <line x1="320" y1="140" x2="135" y2="390" stroke="#A855F7" strokeWidth="2" strokeDasharray="6 4" markerEnd="url(#arrow-cyan)" />
-
-            {/* Right side: Arrow lines starting from Right KECAA Logo (x=680, y=140) pointing to Right 3 Badges */}
-            <line x1="680" y1="140" x2="865" y2="140" stroke="#8BC53F" strokeWidth="2" strokeDasharray="6 4" markerEnd="url(#arrow-gold)" />
-            <line x1="680" y1="140" x2="865" y2="265" stroke="#00F2FE" strokeWidth="2" strokeDasharray="6 4" markerEnd="url(#arrow-gold)" />
-            <line x1="680" y1="140" x2="865" y2="390" stroke="#A855F7" strokeWidth="2" strokeDasharray="6 4" markerEnd="url(#arrow-gold)" />
-
-            {/* Glowing origin dots on the logos */}
-            <circle cx="320" cy="140" r="5" fill="#00F2FE" />
-            <circle cx="680" cy="140" r="5" fill="#F4C542" />
-          </svg>
-        )}
 
         {/* ── MAIN CONTENT AREA WITH 6 FEATURE BADGES INSIDE CARD ── */}
         <div style={{
