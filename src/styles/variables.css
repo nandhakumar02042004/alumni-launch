@@ -1,0 +1,64 @@
+/* KECAA Brand Design System Tokens */
+:root {
+  /* KECAA Official Palette */
+  --kec-navy: #1E376A;
+  --kec-navy-dark: #0A162F;
+  --kec-navy-deeper: #050B18;
+  --kec-green: #8BC53F;
+  --kec-green-glow: rgba(139, 197, 63, 0.4);
+  --kec-gold: #F4C542;
+  --kec-gold-light: #FFE896;
+  --kec-gold-glow: rgba(244, 197, 66, 0.5);
+
+  /* Red Velvet Curtain Gradients */
+  --curtain-dark: #3B000B;
+  --curtain-main: #80001A;
+  --curtain-light: #B80D30;
+  --curtain-gold-trim: linear-gradient(90deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
+
+  /* Surface Colors */
+  --bg-main: var(--kec-navy-dark);
+  --bg-surface: rgba(15, 29, 58, 0.75);
+  --bg-surface-hover: rgba(30, 55, 106, 0.85);
+  --border-color: rgba(244, 197, 66, 0.2);
+  --border-glow: rgba(139, 197, 63, 0.35);
+
+  /* Typography Colors */
+  --text-main: #F8FAFC;
+  --text-muted: #94A3B8;
+  --text-gold: #F4C542;
+  --text-green: #8BC53F;
+
+  /* Premium Gradients */
+  --grad-gold: linear-gradient(135deg, #FFE896 0%, #F4C542 50%, #9E7410 100%);
+  --grad-kec: linear-gradient(135deg, #1E376A 0%, #15274E 50%, #0A162F 100%);
+  --grad-brand: linear-gradient(135deg, #8BC53F 0%, #F4C542 100%);
+
+  /* Glassmorphism */
+  --glass-bg: rgba(10, 22, 47, 0.75);
+  --glass-border: 1px solid rgba(244, 197, 66, 0.25);
+  --glass-blur: blur(20px);
+  --glass-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+
+  /* Shadows */
+  --shadow-glow-gold: 0 0 30px rgba(244, 197, 66, 0.35);
+  --shadow-glow-green: 0 0 30px rgba(139, 197, 63, 0.35);
+
+  /* Transitions */
+  --transition-slow: 1.8s cubic-bezier(0.77, 0, 0.175, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+[data-theme='light'] {
+  --bg-main: #F1F5F9;
+  --bg-surface: #FFFFFF;
+  --bg-surface-hover: #F8FAFC;
+  --border-color: rgba(30, 55, 106, 0.12);
+  --text-main: #0A162F;
+  --text-muted: #475569;
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: 1px solid rgba(30, 55, 106, 0.15);
+  --glass-shadow: 0 10px 30px rgba(30, 55, 106, 0.1);
+}

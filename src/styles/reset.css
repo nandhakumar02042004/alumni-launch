@@ -1,0 +1,200 @@
+/* CSS Reset & 4K Reference Design Styling */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  font-family: var(--font-family);
+  background-color: #040914;
+  color: var(--text-main);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(8, 16, 34, 0.92);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border-radius: 22px;
+}
+
+/* Gold Gradient Text */
+.gold-text {
+  background: var(--grad-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-text {
+  background: var(--grad-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Background Dots Grid Pattern */
+.bg-dots-grid {
+  position: absolute;
+  top: 30px;
+  left: 40px;
+  width: 180px;
+  height: 120px;
+  background-image: radial-gradient(rgba(0, 242, 254, 0.25) 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Bottom Glowing Wave Light Curves */
+.bg-wave-curves {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 250px;
+  pointer-events: none;
+  z-index: 12;
+  background: radial-gradient(ellipse 100% 60% at 50% 100%, rgba(139, 197, 63, 0.15) 0%, rgba(0, 242, 254, 0.12) 40%, transparent 80%);
+}
+
+.bg-wave-line-green {
+  position: absolute;
+  bottom: -20px;
+  left: -10%;
+  width: 120%;
+  height: 120px;
+  border-top: 2px solid rgba(139, 197, 63, 0.35);
+  border-radius: 50%;
+  transform: rotate(-3deg);
+  filter: drop-shadow(0 0 10px rgba(139, 197, 63, 0.4));
+}
+
+.bg-wave-line-blue {
+  position: absolute;
+  bottom: -10px;
+  left: -10%;
+  width: 120%;
+  height: 140px;
+  border-top: 2px solid rgba(0, 242, 254, 0.35);
+  border-radius: 50%;
+  transform: rotate(3deg);
+  filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.4));
+}
+
+/* Realistic Theatre Curtains Split at Center */
+.curtain-panel {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 50.2vw;
+  height: 100vh;
+  z-index: 200;
+  transition: transform 1.9s cubic-bezier(0.77, 0, 0.175, 1);
+  box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.95), 0 0 60px rgba(0, 0, 0, 0.9);
+}
+
+.curtain-left {
+  left: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    #1F0005 0px,
+    #3B000B 25px,
+    #6B0015 50px,
+    #9C0020 75px,
+    #C40D32 100px,
+    #7A0019 125px,
+    #45000E 150px
+  );
+  border-right: 6px solid #F4C542;
+  box-shadow: inset -15px 0 35px rgba(0,0,0,0.6), 6px 0 30px rgba(244, 197, 66, 0.5);
+  transform: translateX(0);
+}
+
+.curtain-right {
+  right: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    #45000E 0px,
+    #7A0019 25px,
+    #C40D32 50px,
+    #9C0020 75px,
+    #6B0015 100px,
+    #3B000B 125px,
+    #1F0005 150px
+  );
+  border-left: 6px solid #F4C542;
+  box-shadow: inset 15px 0 35px rgba(0,0,0,0.6), -6px 0 30px rgba(244, 197, 66, 0.5);
+  transform: translateX(0);
+}
+
+/* Curtain Open Animations - Center to Left & Right */
+.curtain-panel.open-left {
+  transform: translateX(-102%) !important;
+}
+
+.curtain-panel.open-right {
+  transform: translateX(102%) !important;
+}
+
+/* Top Overhead Valance Drape */
+.curtain-valance {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 85px;
+  z-index: 205;
+  background: repeating-linear-gradient(
+    180deg,
+    #3B000B 0px,
+    #8A001C 40px,
+    #45000E 80px
+  );
+  border-bottom: 5px solid #F4C542;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.9);
+}
+
+.curtain-valance-fringe {
+  position: absolute;
+  bottom: -12px;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: repeating-linear-gradient(
+    90deg,
+    #F4C542 0px,
+    #F4C542 8px,
+    #9E7410 8px,
+    #9E7410 16px
+  );
+}
+
+/* Spotlight Beam */
+.spotlight-beam {
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 650px;
+  height: 950px;
+  background: radial-gradient(ellipse at top, rgba(255, 232, 150, 0.38) 0%, rgba(244, 197, 66, 0.12) 45%, transparent 70%);
+  pointer-events: none;
+  z-index: 90;
+  animation: pulseSpotlight 4s ease-in-out infinite alternate;
+}
+
+@keyframes pulseSpotlight {
+  0% { opacity: 0.75; transform: translateX(-50%) scaleX(1); }
+  100% { opacity: 1; transform: translateX(-50%) scaleX(1.18); }
+}
+
+/* Loading Progress Bar */
+.loading-progress {
+  background: var(--grad-gold);
+  box-shadow: 0 0 20px var(--kec-gold-glow);
+  transition: width 0.3s linear;
+}
