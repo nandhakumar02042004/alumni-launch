@@ -145,7 +145,7 @@ export function CurtainLaunchScreen() {
         padding: isMobile ? '2.2rem 1rem 1.8rem' : '2.5rem 3.5rem 2rem',
         margin: '0 auto',
         display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
-        textAlign: 'center', borderRadius: '28px',
+        textAlign: 'center', borderRadius: '16px',
         background: 'rgba(8,16,34,0.94)', backdropFilter: 'blur(28px)', WebkitBackdropFilter: 'blur(28px)',
         border: '3.5px solid transparent',
         backgroundImage: 'linear-gradient(rgba(8,16,34,0.95),rgba(8,16,34,0.95)), linear-gradient(135deg,#8BC53F 0%,#00F2FE 45%,#0099FF 75%,#8BC53F 100%)',
