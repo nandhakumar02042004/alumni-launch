@@ -168,7 +168,7 @@ export function CurtainLaunchScreen() {
         width: isMobile ? '96%' : 'calc(100% - 40px)',
         maxWidth: '1380px',
         minHeight: isMobile ? 'auto' : '540px',
-        padding: isMobile ? '2.2rem 1rem 1.8rem' : '4.2rem 3.5rem 3.5rem',
+        padding: isMobile ? '2.2rem 1rem 1.8rem' : '3.8rem 3.5rem 3.2rem',
         margin: '0 auto',
         textAlign: 'center', borderRadius: '28px',
         background: 'rgba(8,16,34,0.94)', backdropFilter: 'blur(28px)', WebkitBackdropFilter: 'blur(28px)',
@@ -192,36 +192,55 @@ export function CurtainLaunchScreen() {
           <Users size={isMobile ? 20 : 24} />
         </div>
 
-        {/* ── ALUMNI CONNECTIONS CONSTELLATION GRAPH BACKGROUND ── */}
+        {/* ── ARROW CONNECTIONS STARTING DIRECTLY FROM THE LOGOS TO THE 3 BADGES ── */}
         {!isMobile && (
-          <svg style={{
-            position: 'absolute', inset: 0, width: '100%', height: '100%',
-            pointerEvents: 'none', zIndex: 1, opacity: 0.35,
-          }}>
-            <line x1="120" y1="120" x2="300" y2="180" stroke="rgba(0,242,254,0.4)" strokeWidth="1.5" strokeDasharray="5 5" />
-            <line x1="120" y1="260" x2="300" y2="180" stroke="rgba(139,197,63,0.4)" strokeWidth="1.5" strokeDasharray="5 5" />
-            <line x1="120" y1="400" x2="300" y2="180" stroke="rgba(168,85,247,0.4)" strokeWidth="1.5" strokeDasharray="5 5" />
-            <line x1="1260" y1="120" x2="1080" y2="180" stroke="rgba(139,197,63,0.4)" strokeWidth="1.5" strokeDasharray="5 5" />
-            <line x1="1260" y1="260" x2="1080" y2="180" stroke="rgba(0,242,254,0.4)" strokeWidth="1.5" strokeDasharray="5 5" />
-            <line x1="1260" y1="400" x2="1080" y2="180" stroke="rgba(168,85,247,0.4)" strokeWidth="1.5" strokeDasharray="5 5" />
-            <circle cx="300" cy="180" r="4" fill="#00F2FE" />
-            <circle cx="1080" cy="180" r="4" fill="#8BC53F" />
+          <svg
+            viewBox="0 0 1000 500"
+            preserveAspectRatio="none"
+            style={{
+              position: 'absolute', inset: 0, width: '100%', height: '100%',
+              pointerEvents: 'none', zIndex: 2, opacity: 0.75,
+            }}
+          >
+            <defs>
+              <marker id="arrow-cyan" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#00F2FE" />
+              </marker>
+              <marker id="arrow-gold" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#F4C542" />
+              </marker>
+            </defs>
+
+            {/* Left side: Arrow lines starting from Left KEC Logo (x=330, y=140) pointing to Left 3 Badges */}
+            <line x1="320" y1="140" x2="135" y2="140" stroke="#00F2FE" strokeWidth="2" strokeDasharray="6 4" markerEnd="url(#arrow-cyan)" />
+            <line x1="320" y1="140" x2="135" y2="265" stroke="#8BC53F" strokeWidth="2" strokeDasharray="6 4" markerEnd="url(#arrow-cyan)" />
+            <line x1="320" y1="140" x2="135" y2="390" stroke="#A855F7" strokeWidth="2" strokeDasharray="6 4" markerEnd="url(#arrow-cyan)" />
+
+            {/* Right side: Arrow lines starting from Right KECAA Logo (x=680, y=140) pointing to Right 3 Badges */}
+            <line x1="680" y1="140" x2="865" y2="140" stroke="#8BC53F" strokeWidth="2" strokeDasharray="6 4" markerEnd="url(#arrow-gold)" />
+            <line x1="680" y1="140" x2="865" y2="265" stroke="#00F2FE" strokeWidth="2" strokeDasharray="6 4" markerEnd="url(#arrow-gold)" />
+            <line x1="680" y1="140" x2="865" y2="390" stroke="#A855F7" strokeWidth="2" strokeDasharray="6 4" markerEnd="url(#arrow-gold)" />
+
+            {/* Glowing origin dots on the logos */}
+            <circle cx="320" cy="140" r="5" fill="#00F2FE" />
+            <circle cx="680" cy="140" r="5" fill="#F4C542" />
           </svg>
         )}
 
         {/* ── MAIN CONTENT AREA WITH 6 FEATURE BADGES INSIDE CARD ── */}
         <div style={{
           display: 'flex',
-          alignItems: 'center',
+          alignItems: 'flex-start',
           justifyContent: 'space-between',
           gap: isMobile ? '0' : '2rem',
           position: 'relative', zIndex: 5,
         }}>
-          {/* Left Column: 3 Badges INSIDE Card (Desktop) */}
+          {/* Left Column: 3 Badges INSIDE Card (Top aligned with logos starting height) */}
           {!isMobile && (
             <div style={{
               display: 'flex', flexDirection: 'column', gap: '2.4rem',
               alignItems: 'center', minWidth: '140px', paddingLeft: '0.8rem',
+              marginTop: '0.2rem',
             }}>
               {leftBadges.map((item, i) => (
                 <div key={i} className={`float-badge-${i}`} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.45rem' }}>
@@ -257,7 +276,7 @@ export function CurtainLaunchScreen() {
               <span style={{ width: '35px', height: '1px', background: 'linear-gradient(-90deg,transparent,#8BC53F)' }} />
             </div>
 
-            {/* INCREASED LOGO SIZES */}
+            {/* INCREASED LOGO SIZES (Aligned starting height with top side badges) */}
             <div style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               gap: isMobile ? '1.2rem' : '3.5rem',
@@ -389,11 +408,12 @@ export function CurtainLaunchScreen() {
             </div>
           </div>
 
-          {/* Right Column: 3 Badges INSIDE Card (Desktop) */}
+          {/* Right Column: 3 Badges INSIDE Card (Top aligned with logos starting height) */}
           {!isMobile && (
             <div style={{
               display: 'flex', flexDirection: 'column', gap: '2.4rem',
               alignItems: 'center', minWidth: '140px', paddingRight: '0.8rem',
+              marginTop: '0.2rem',
             }}>
               {rightBadges.map((item, i) => (
                 <div key={i} className={`float-badge-${i}`} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.45rem' }}>
