@@ -196,16 +196,17 @@ export function CurtainLaunchScreen() {
           {/* Center Column: Main Title, Info & Countdown */}
           <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
 
-            {/* Cursive Welcome Back */}
+            {/* Cursive Welcome Back (Increased font size) */}
             <div style={{
               fontFamily: "'Dancing Script','Brush Script MT',cursive,Georgia,serif",
-              color: '#8BC53F', fontSize: isMobile ? '1.4rem' : '2.4rem',
-              fontWeight: '700', fontStyle: 'italic', marginBottom: '1.1rem',
-              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.8rem',
+              color: '#8BC53F', fontSize: isMobile ? '1.8rem' : '3.2rem',
+              fontWeight: '700', fontStyle: 'italic', marginBottom: '1.2rem',
+              textShadow: '0 0 25px rgba(139,197,63,0.55)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem',
             }}>
-              <span style={{ width: '45px', height: '1.5px', background: 'linear-gradient(90deg,transparent,#8BC53F)' }} />
+              <span style={{ width: '55px', height: '2px', background: 'linear-gradient(90deg,transparent,#8BC53F)' }} />
               Welcome Back
-              <span style={{ width: '45px', height: '1.5px', background: 'linear-gradient(-90deg,transparent,#8BC53F)' }} />
+              <span style={{ width: '55px', height: '2px', background: 'linear-gradient(-90deg,transparent,#8BC53F)' }} />
             </div>
 
             {/* FLUID & FLEXIBLE LOGO CONTAINERS (100% UNCROPPED FOR ALL SCREENS & 4K) */}
