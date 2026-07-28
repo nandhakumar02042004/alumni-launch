@@ -208,7 +208,7 @@ export function CurtainLaunchScreen() {
               <span style={{ width: '45px', height: '1.5px', background: 'linear-gradient(-90deg,transparent,#8BC53F)' }} />
             </div>
 
-            {/* SIGNIFICANTLY INCREASED LOGO SIZES */}
+            {/* EXPANDED LOGO CONTAINER WITH INCREASED WIDTH & HEIGHT */}
             <div style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               gap: isMobile ? '1.4rem' : '4.5rem',
@@ -216,23 +216,27 @@ export function CurtainLaunchScreen() {
             }}>
               {heroImg && (
                 <div style={{
-                  padding: isMobile ? '0.7rem 1.4rem' : '1.2rem 3.2rem',
-                  background: '#FFFFFF', borderRadius: '24px',
-                  border: '4px solid #00F2FE', boxShadow: '0 0 45px rgba(0,242,254,0.75)',
+                  padding: isMobile ? '0.8rem 1.6rem' : '1.5rem 4.2rem',
+                  minWidth: isMobile ? '160px' : '340px',
+                  height: isMobile ? '75px' : '160px',
+                  background: '#FFFFFF', borderRadius: '26px',
+                  border: '4px solid #00F2FE', boxShadow: '0 0 50px rgba(0,242,254,0.85)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   transition: 'transform 0.2s ease',
                 }}>
-                  <img src={heroImg} alt="KEC Emblem" style={{ height: isMobile ? '58px' : '118px', width: 'auto', objectFit: 'contain' }} />
+                  <img src={heroImg} alt="KEC Emblem" style={{ height: isMobile ? '65px' : '145px', width: 'auto', objectFit: 'contain', maxWidth: '100%' }} />
                 </div>
               )}
               <div style={{
-                padding: isMobile ? '0.7rem 1.4rem' : '1.2rem 3.2rem',
-                background: '#FFFFFF', borderRadius: '24px',
-                border: '4px solid #F4C542', boxShadow: '0 0 45px rgba(244,197,66,0.75)',
+                padding: isMobile ? '0.8rem 1.6rem' : '1.5rem 4.2rem',
+                minWidth: isMobile ? '160px' : '340px',
+                height: isMobile ? '75px' : '160px',
+                background: '#FFFFFF', borderRadius: '26px',
+                border: '4px solid #F4C542', boxShadow: '0 0 50px rgba(244,197,66,0.85)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 transition: 'transform 0.2s ease',
               }}>
-                <img src={logoImg} alt="KECAA Logo" style={{ height: isMobile ? '58px' : '118px', width: 'auto', objectFit: 'contain' }} />
+                <img src={logoImg} alt="KECAA Logo" style={{ height: isMobile ? '65px' : '145px', width: 'auto', objectFit: 'contain', maxWidth: '100%' }} />
               </div>
             </div>
 
