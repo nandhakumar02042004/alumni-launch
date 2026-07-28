@@ -222,9 +222,10 @@ export function CurtainLaunchScreen() {
                   background: '#FFFFFF', borderRadius: '30px',
                   border: '4.5px solid #00F2FE', boxShadow: '0 0 60px rgba(0,242,254,0.88)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  overflow: 'hidden',
                   transition: 'transform 0.2s ease',
                 }}>
-                  <img src={heroImg} alt="KEC Emblem" style={{ height: isMobile ? '90px' : '210px', width: 'auto', objectFit: 'contain', maxWidth: '100%' }} />
+                  <img src={heroImg} alt="KEC Emblem" style={{ height: isMobile ? '90px' : '210px', width: 'auto', objectFit: 'contain', maxWidth: '100%', transform: 'scale(1.32)' }} />
                 </div>
               )}
               <div style={{
