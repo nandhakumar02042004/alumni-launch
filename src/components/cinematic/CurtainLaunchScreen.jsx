@@ -97,35 +97,7 @@ export function CurtainLaunchScreen() {
 
       {/* Bottom wave curves */}
       {curtainState === 'hidden' && (
-        <div className="bg-wave-curves">
-          <div className="bg-wave-line-green" />
-          <div className="bg-wave-line-blue" />
-        </div>
-      )}
-
-      {/* ── Full-screen crossfading background slideshow ── */}
-      {curtainState === 'hidden' && (
-        <div style={{ position: 'absolute', inset: 0, zIndex: 4, pointerEvents: 'none' }}>
-          {BG_IMAGES.map((img, idx) => (
-            <div
-              key={idx}
-              style={{
-                position: 'absolute', inset: 0,
-                backgroundImage: `url(${img})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                opacity: idx === bgIndex ? 0.32 : 0,
-                transition: 'opacity 1.5s ease-in-out',
-                filter: 'brightness(0.6) contrast(1.05)',
-              }}
-            />
-          ))}
-          {/* Gradient vignette overlay */}
-          <div style={{
-            position: 'absolute', inset: 0,
-            background: 'radial-gradient(ellipse at center, rgba(4,9,20,0.35) 0%, rgba(4,9,20,0.75) 70%, rgba(4,9,20,0.92) 100%)',
-          }} />
-        </div>
+      </div>
       )}
 
       <div className="spotlight-beam" style={{ zIndex: 15 }} />
@@ -162,14 +134,16 @@ export function CurtainLaunchScreen() {
         </>
       )}
 
-      {/* ═══════════ MAIN GLASS CARD LARGE EXPANDED LAYOUT (~1380px max-width) ═══════════ */}
+      {/* ═══════════ MAIN GLASS CARD FULL-SCREEN BORDER LAYOUT ═══════════ */}
       <div style={{
         position: 'relative', zIndex: 110,
-        width: isMobile ? '96%' : 'calc(100% - 40px)',
-        maxWidth: '1380px',
-        minHeight: isMobile ? 'auto' : '540px',
-        padding: isMobile ? '2.2rem 1rem 1.8rem' : '3.8rem 3.5rem 3.2rem',
+        width: isMobile ? '96%' : '98%',
+        maxWidth: '98%',
+        height: isMobile ? 'auto' : 'calc(100vh - 50px)',
+        minHeight: isMobile ? 'auto' : 'calc(100vh - 50px)',
+        padding: isMobile ? '2.2rem 1rem 1.8rem' : '2.5rem 3.5rem 2.2rem',
         margin: '0 auto',
+        display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
         textAlign: 'center', borderRadius: '28px',
         background: 'rgba(8,16,34,0.94)', backdropFilter: 'blur(28px)', WebkitBackdropFilter: 'blur(28px)',
         border: '3.5px solid transparent',
