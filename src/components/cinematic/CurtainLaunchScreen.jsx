@@ -115,108 +115,86 @@ export function CurtainLaunchScreen() {
 
       {/* Orbit keyframe animations */}
       <style>{`
-        @keyframes orbitCW  { from { transform: rotate(0deg);    } to { transform: rotate(360deg);  } }
-        @keyframes orbitCCW { from { transform: rotate(0deg);    } to { transform: rotate(-360deg); } }
-        @keyframes counterCW  { from { transform: rotate(0deg);  } to { transform: rotate(-360deg); } }
-        @keyframes counterCCW { from { transform: rotate(0deg);  } to { transform: rotate(360deg);  } }
+        @keyframes orbitCW   { from { transform: rotate(0deg);   } to { transform: rotate(360deg);  } }
+        @keyframes counterCW { from { transform: rotate(0deg);   } to { transform: rotate(-360deg); } }
       `}</style>
 
-      {/* Side orbit icons — desktop only */}
-      {curtainState === 'hidden' && !isMobile && (
-        <>
-          {/* ── LEFT ORBIT RING (clockwise) ── */}
-          {/* Static dashed orbit circle */}
-          <div style={{
-            position: 'absolute', left: '10vw', top: '50%',
-            width: '240px', height: '240px',
-            marginLeft: '-120px', marginTop: '-120px',
-            borderRadius: '50%',
-            border: '1.5px dashed rgba(0,242,254,0.28)',
-            pointerEvents: 'none', zIndex: 104,
-          }} />
+      {/* ── UNIFIED ORBIT RING — all 6 badges circle the card together ── */}
+      {curtainState === 'hidden' && !isMobile && (() => {
+        const SIZE = 820;   // orbit container px
+        const R    = 390;   // radius from center
+        const CX   = SIZE / 2;
+        const CY   = SIZE / 2;
+        const DURATION = '18s';
 
-          {/* Rotating ring container — badges ride this */}
-          <div style={{
-            position: 'absolute', left: '10vw', top: '50%',
-            width: '240px', height: '240px',
-            marginLeft: '-120px', marginTop: '-120px',
-            animation: 'orbitCW 10s linear infinite',
-            zIndex: 105,
-          }}>
-            {[
-              { icon: <GraduationCap size={20} />, color: '#0099FF', bg: 'rgba(0,153,255,0.18)', shadow: '0 0 18px rgba(0,153,255,0.55)', label: 'Cherish\nMemories',        angleDeg: 270 },
-              { icon: <Users size={20} />,          color: '#8BC53F', bg: 'rgba(139,197,63,0.18)', shadow: '0 0 18px rgba(139,197,63,0.55)', label: 'Reconnect\nwith Friends', angleDeg: 30  },
-              { icon: <Globe size={20} />,          color: '#A855F7', bg: 'rgba(168,85,247,0.18)', shadow: '0 0 18px rgba(168,85,247,0.55)', label: 'Global\nNetwork',        angleDeg: 150 },
-            ].map((item, i) => {
-              const rad = item.angleDeg * Math.PI / 180;
-              const r = 110;
-              const cx = 120 + r * Math.cos(rad);
-              const cy = 120 + r * Math.sin(rad);
-              return (
-                <div key={i} style={{
-                  position: 'absolute',
-                  left: cx + 'px', top: cy + 'px',
-                  transform: 'translate(-50%, -50%)',
-                }}>
-                  {/* Counter-rotate so badge stays upright */}
-                  <div style={{ animation: 'counterCW 10s linear infinite', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.3rem' }}>
-                    <div style={{ padding: '0.6rem', borderRadius: '50%', background: item.bg, border: `1.5px solid ${item.color}`, color: item.color, boxShadow: item.shadow, backdropFilter: 'blur(8px)' }}>
-                      {item.icon}
+        const badges = [
+          { icon: <GraduationCap size={20} />, color: '#0099FF', bg: 'rgba(0,153,255,0.18)',   shadow: '0 0 18px rgba(0,153,255,0.6)',   label: 'Cherish\nMemories'        },
+          { icon: <Briefcase size={20} />,     color: '#8BC53F', bg: 'rgba(139,197,63,0.18)',  shadow: '0 0 18px rgba(139,197,63,0.6)',  label: 'Explore\nOpportunities'  },
+          { icon: <Users size={20} />,         color: '#8BC53F', bg: 'rgba(139,197,63,0.18)',  shadow: '0 0 18px rgba(139,197,63,0.6)',  label: 'Reconnect\nwith Friends'  },
+          { icon: <Handshake size={20} />,     color: '#0099FF', bg: 'rgba(0,153,255,0.18)',   shadow: '0 0 18px rgba(0,153,255,0.6)',   label: 'Collaborate\n& Grow'      },
+          { icon: <Globe size={20} />,         color: '#A855F7', bg: 'rgba(168,85,247,0.18)',  shadow: '0 0 18px rgba(168,85,247,0.6)',  label: 'Global\nNetwork'          },
+          { icon: <Calendar size={20} />,      color: '#A855F7', bg: 'rgba(168,85,247,0.18)',  shadow: '0 0 18px rgba(168,85,247,0.6)',  label: 'Events\n& Reunions'       },
+        ];
+
+        return (
+          <>
+            {/* Dashed orbit guide ring */}
+            <div style={{
+              position: 'absolute', left: '50%', top: '50%',
+              width: SIZE + 'px', height: SIZE + 'px',
+              marginLeft: -(SIZE/2) + 'px', marginTop: -(SIZE/2) + 'px',
+              borderRadius: '50%',
+              border: '1.5px dashed rgba(0,242,254,0.2)',
+              pointerEvents: 'none', zIndex: 104,
+            }} />
+
+            {/* Single rotating ring — all 6 badges ride this */}
+            <div style={{
+              position: 'absolute', left: '50%', top: '50%',
+              width: SIZE + 'px', height: SIZE + 'px',
+              marginLeft: -(SIZE/2) + 'px', marginTop: -(SIZE/2) + 'px',
+              animation: `orbitCW ${DURATION} linear infinite`,
+              zIndex: 105, pointerEvents: 'none',
+            }}>
+              {badges.map((badge, i) => {
+                const angleDeg = i * 60; // 360° / 6 badges = 60° each
+                const rad = angleDeg * Math.PI / 180;
+                const bx = CX + R * Math.cos(rad);
+                const by = CY + R * Math.sin(rad);
+                return (
+                  <div key={i} style={{
+                    position: 'absolute',
+                    left: bx + 'px', top: by + 'px',
+                    transform: 'translate(-50%, -50%)',
+                  }}>
+                    {/* Counter-rotate inner content to keep icons & labels upright */}
+                    <div style={{
+                      animation: `counterCW ${DURATION} linear infinite`,
+                      display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.35rem',
+                    }}>
+                      <div style={{
+                        padding: '0.65rem', borderRadius: '50%',
+                        background: badge.bg,
+                        border: `1.5px solid ${badge.color}`,
+                        color: badge.color,
+                        boxShadow: badge.shadow,
+                        backdropFilter: 'blur(8px)',
+                      }}>
+                        {badge.icon}
+                      </div>
+                      <span style={{
+                        fontSize: '0.65rem', fontWeight: '700', color: '#E2E8F0',
+                        textShadow: '0 2px 6px rgba(0,0,0,0.95)',
+                        textAlign: 'center', whiteSpace: 'pre-line', lineHeight: 1.25,
+                      }}>{badge.label}</span>
                     </div>
-                    <span style={{ fontSize: '0.65rem', fontWeight: '700', color: '#E2E8F0', textShadow: '0 2px 6px rgba(0,0,0,0.9)', textAlign: 'center', whiteSpace: 'pre-line', lineHeight: 1.2 }}>{item.label}</span>
                   </div>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* ── RIGHT ORBIT RING (counter-clockwise) ── */}
-          {/* Static dashed orbit circle */}
-          <div style={{
-            position: 'absolute', right: '10vw', top: '50%',
-            width: '240px', height: '240px',
-            marginRight: '-120px', marginTop: '-120px',
-            borderRadius: '50%',
-            border: '1.5px dashed rgba(0,242,254,0.28)',
-            pointerEvents: 'none', zIndex: 104,
-          }} />
-
-          {/* Rotating ring container — counter-clockwise */}
-          <div style={{
-            position: 'absolute', right: '10vw', top: '50%',
-            width: '240px', height: '240px',
-            marginRight: '-120px', marginTop: '-120px',
-            animation: 'orbitCCW 10s linear infinite',
-            zIndex: 105,
-          }}>
-            {[
-              { icon: <Briefcase size={20} />, color: '#8BC53F', bg: 'rgba(139,197,63,0.18)', shadow: '0 0 18px rgba(139,197,63,0.55)', label: 'Explore\nOpportunities', angleDeg: 270 },
-              { icon: <Handshake size={20} />, color: '#0099FF', bg: 'rgba(0,153,255,0.18)', shadow: '0 0 18px rgba(0,153,255,0.55)', label: 'Collaborate\n& Grow',          angleDeg: 30  },
-              { icon: <Calendar size={20} />,  color: '#A855F7', bg: 'rgba(168,85,247,0.18)', shadow: '0 0 18px rgba(168,85,247,0.55)', label: 'Events\n& Reunions',        angleDeg: 150 },
-            ].map((item, i) => {
-              const rad = item.angleDeg * Math.PI / 180;
-              const r = 110;
-              const cx = 120 + r * Math.cos(rad);
-              const cy = 120 + r * Math.sin(rad);
-              return (
-                <div key={i} style={{
-                  position: 'absolute',
-                  left: cx + 'px', top: cy + 'px',
-                  transform: 'translate(-50%, -50%)',
-                }}>
-                  {/* Counter-rotate so badge stays upright */}
-                  <div style={{ animation: 'counterCCW 10s linear infinite', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.3rem' }}>
-                    <div style={{ padding: '0.6rem', borderRadius: '50%', background: item.bg, border: `1.5px solid ${item.color}`, color: item.color, boxShadow: item.shadow, backdropFilter: 'blur(8px)' }}>
-                      {item.icon}
-                    </div>
-                    <span style={{ fontSize: '0.65rem', fontWeight: '700', color: '#E2E8F0', textShadow: '0 2px 6px rgba(0,0,0,0.9)', textAlign: 'center', whiteSpace: 'pre-line', lineHeight: 1.2 }}>{item.label}</span>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </>
-      )}
+                );
+              })}
+            </div>
+          </>
+        );
+      })()}
 
       {/* ═══════════ MAIN GLASS CARD ═══════════ */}
       <div style={{
