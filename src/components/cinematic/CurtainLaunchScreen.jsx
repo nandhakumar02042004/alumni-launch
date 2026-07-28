@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ParticleCanvas } from './ParticleCanvas';
 import { ConfettiCanvas } from './ConfettiCanvas';
-import { ChevronRight, Rocket, ShieldCheck, Users, GraduationCap, Globe, Briefcase, Handshake, Calendar, TrendingUp, Heart, Sparkles, Network } from 'lucide-react';
+import { ChevronRight, Rocket, ShieldCheck, Users, GraduationCap, Globe, Briefcase, Handshake, Calendar, TrendingUp, Heart } from 'lucide-react';
 import logoImg from '../../assets/Logo.png';
 import heroImg from '../../assets/image.png';
 import bangaloreImg from '../../assets/BANGALORE1.jpg';
@@ -12,7 +12,7 @@ const BG_IMAGES = [bangaloreImg, cbeImg, campusImg];
 
 export function CurtainLaunchScreen() {
   const [countdown, setCountdown] = useState(30);
-  const [curtainState, setCurtainState] = useState('hidden'); // 'hidden' | 'closing' | 'opening' | 'done'
+  const [curtainState, setCurtainState] = useState('hidden');
   const [showSparkShower, setShowSparkShower] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
   const [bgIndex, setBgIndex] = useState(0);
@@ -103,7 +103,7 @@ export function CurtainLaunchScreen() {
         </div>
       )}
 
-      {/* ── Full-screen crossfading background slideshow (hidden during curtain opening) ── */}
+      {/* ── Full-screen crossfading background slideshow ── */}
       {curtainState === 'hidden' && (
         <div style={{ position: 'absolute', inset: 0, zIndex: 4, pointerEvents: 'none' }}>
           {BG_IMAGES.map((img, idx) => (
@@ -192,12 +192,30 @@ export function CurtainLaunchScreen() {
           <Users size={isMobile ? 20 : 24} />
         </div>
 
+        {/* ── ALUMNI CONNECTIONS CONSTELLATION GRAPH BACKGROUND ── */}
+        {!isMobile && (
+          <svg style={{
+            position: 'absolute', inset: 0, width: '100%', height: '100%',
+            pointerEvents: 'none', zIndex: 1, opacity: 0.35,
+          }}>
+            <line x1="120" y1="120" x2="300" y2="180" stroke="rgba(0,242,254,0.4)" strokeWidth="1.5" strokeDasharray="5 5" />
+            <line x1="120" y1="260" x2="300" y2="180" stroke="rgba(139,197,63,0.4)" strokeWidth="1.5" strokeDasharray="5 5" />
+            <line x1="120" y1="400" x2="300" y2="180" stroke="rgba(168,85,247,0.4)" strokeWidth="1.5" strokeDasharray="5 5" />
+            <line x1="1260" y1="120" x2="1080" y2="180" stroke="rgba(139,197,63,0.4)" strokeWidth="1.5" strokeDasharray="5 5" />
+            <line x1="1260" y1="260" x2="1080" y2="180" stroke="rgba(0,242,254,0.4)" strokeWidth="1.5" strokeDasharray="5 5" />
+            <line x1="1260" y1="400" x2="1080" y2="180" stroke="rgba(168,85,247,0.4)" strokeWidth="1.5" strokeDasharray="5 5" />
+            <circle cx="300" cy="180" r="4" fill="#00F2FE" />
+            <circle cx="1080" cy="180" r="4" fill="#8BC53F" />
+          </svg>
+        )}
+
         {/* ── MAIN CONTENT AREA WITH 6 FEATURE BADGES INSIDE CARD ── */}
         <div style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
           gap: isMobile ? '0' : '2rem',
+          position: 'relative', zIndex: 5,
         }}>
           {/* Left Column: 3 Badges INSIDE Card (Desktop) */}
           {!isMobile && (
@@ -226,25 +244,12 @@ export function CurtainLaunchScreen() {
           {/* Center Column: Main Title, Info & Countdown */}
           <div style={{ flex: 1, minWidth: 0 }}>
 
-            {/* Glowing Alumni Connections Header Badge */}
-            <div style={{
-              display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-              padding: '0.35rem 1rem', borderRadius: '9999px',
-              background: 'rgba(0,242,254,0.08)', border: '1px solid rgba(0,242,254,0.3)',
-              color: '#00F2FE', fontSize: isMobile ? '0.65rem' : '0.76rem',
-              fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase',
-              marginBottom: '0.75rem', boxShadow: '0 0 15px rgba(0,242,254,0.2)',
-            }}>
-              <Network size={14} color="#8BC53F" />
-              <span>KONGU ENGINEERING COLLEGE ALUMNI NETWORK</span>
-              <Sparkles size={14} color="#F4C542" />
-            </div>
-
             {/* Cursive Welcome Back */}
             <div style={{
               fontFamily: "'Dancing Script','Brush Script MT',cursive,Georgia,serif",
-              color: '#8BC53F', fontSize: isMobile ? '1.2rem' : '1.8rem',
-              fontWeight: '600', fontStyle: 'italic', marginBottom: '0.8rem',
+              color: '#8BC53F', fontSize: isMobile ? '1.25rem' : '1.9rem',
+              fontWeight: '600', fontStyle: 'italic', marginBottom: '0.9rem',
+              marginTop: '0.2rem',
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.6rem',
             }}>
               <span style={{ width: '35px', height: '1px', background: 'linear-gradient(90deg,transparent,#8BC53F)' }} />
@@ -252,31 +257,31 @@ export function CurtainLaunchScreen() {
               <span style={{ width: '35px', height: '1px', background: 'linear-gradient(-90deg,transparent,#8BC53F)' }} />
             </div>
 
-            {/* SLIGHTLY INCREASED LOGO SIZES */}
+            {/* INCREASED LOGO SIZES */}
             <div style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              gap: isMobile ? '1.2rem' : '3.2rem',
-              marginBottom: '1.4rem',
+              gap: isMobile ? '1.2rem' : '3.5rem',
+              marginBottom: '1.6rem',
             }}>
               {heroImg && (
                 <div style={{
-                  padding: isMobile ? '0.4rem 0.8rem' : '0.65rem 1.5rem',
-                  background: '#FFFFFF', borderRadius: '14px',
-                  border: '2px solid #00F2FE', boxShadow: '0 0 22px rgba(0,242,254,0.5)',
+                  padding: isMobile ? '0.45rem 0.9rem' : '0.75rem 1.8rem',
+                  background: '#FFFFFF', borderRadius: '16px',
+                  border: '2.5px solid #00F2FE', boxShadow: '0 0 28px rgba(0,242,254,0.6)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   transition: 'transform 0.2s ease',
                 }}>
-                  <img src={heroImg} alt="KEC Emblem" style={{ height: isMobile ? '36px' : '58px', width: 'auto', objectFit: 'contain' }} />
+                  <img src={heroImg} alt="KEC Emblem" style={{ height: isMobile ? '40px' : '66px', width: 'auto', objectFit: 'contain' }} />
                 </div>
               )}
               <div style={{
-                padding: isMobile ? '0.4rem 0.8rem' : '0.65rem 1.5rem',
-                background: '#FFFFFF', borderRadius: '14px',
-                border: '2px solid #F4C542', boxShadow: '0 0 22px rgba(244,197,66,0.5)',
+                padding: isMobile ? '0.45rem 0.9rem' : '0.75rem 1.8rem',
+                background: '#FFFFFF', borderRadius: '16px',
+                border: '2.5px solid #F4C542', boxShadow: '0 0 28px rgba(244,197,66,0.6)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 transition: 'transform 0.2s ease',
               }}>
-                <img src={logoImg} alt="KECAA Logo" style={{ height: isMobile ? '36px' : '58px', width: 'auto', objectFit: 'contain' }} />
+                <img src={logoImg} alt="KECAA Logo" style={{ height: isMobile ? '40px' : '66px', width: 'auto', objectFit: 'contain' }} />
               </div>
             </div>
 
@@ -294,7 +299,7 @@ export function CurtainLaunchScreen() {
               <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}><Heart size={15} color="#8BC53F" /> Make an Impact.</span>
             </div>
 
-            {/* Tagline */}
+            {/* Tagline referring to College Alumni Connections & Friends */}
             <div style={{
               fontSize: isMobile ? '0.76rem' : '0.88rem', color: '#FFFFFF',
               maxWidth: '520px', margin: '0 auto', lineHeight: 1.45,
