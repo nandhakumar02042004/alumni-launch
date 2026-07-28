@@ -161,13 +161,13 @@ export function CurtainLaunchScreen() {
 
         {/* Top center emblem badge */}
         <div style={{
-          position: 'absolute', top: '-25px', left: '50%', transform: 'translateX(-50%)',
-          width: isMobile ? '44px' : '56px', height: isMobile ? '44px' : '56px',
-          borderRadius: '50%', background: '#081022', border: '2.5px solid #8BC53F', color: '#8BC53F',
+          position: 'absolute', top: '-18px', left: '50%', transform: 'translateX(-50%)',
+          width: isMobile ? '30px' : '36px', height: isMobile ? '30px' : '36px',
+          borderRadius: '50%', background: '#081022', border: '2px solid #8BC53F', color: '#8BC53F',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          boxShadow: '0 0 25px rgba(139,197,63,0.65)', zIndex: 115,
+          boxShadow: '0 0 18px rgba(139,197,63,0.65)', zIndex: 115,
         }}>
-          <Users size={isMobile ? 22 : 26} />
+          <Users size={isMobile ? 14 : 16} />
         </div>
 
         {/* ── MAIN CONTENT AREA WITH 6 FEATURE BADGES INSIDE CARD ── */}
