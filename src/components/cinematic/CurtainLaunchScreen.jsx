@@ -154,32 +154,6 @@ export function CurtainLaunchScreen() {
           <Users size={isMobile ? 20 : 24} />
         </div>
 
-        {/* Header Logo Row - KEC emblem on left, KECAA logo on right */}
-        <div style={{
-          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          maxWidth: '1240px', margin: '0.2rem auto 1.4rem auto',
-          padding: '0 0.5rem',
-        }}>
-          {heroImg && (
-            <div style={{
-              padding: isMobile ? '0.35rem 0.7rem' : '0.5rem 1.25rem',
-              background: '#FFFFFF', borderRadius: '12px',
-              border: '1.5px solid #00F2FE', boxShadow: '0 0 15px rgba(0,242,254,0.4)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-            }}>
-              <img src={heroImg} alt="KEC Emblem" style={{ height: isMobile ? '32px' : '46px', width: 'auto', objectFit: 'contain' }} />
-            </div>
-          )}
-          <div style={{
-            padding: isMobile ? '0.35rem 0.7rem' : '0.5rem 1.25rem',
-            background: '#FFFFFF', borderRadius: '12px',
-            border: '1.5px solid #F4C542', boxShadow: '0 0 15px rgba(244,197,66,0.4)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}>
-            <img src={logoImg} alt="KECAA Logo" style={{ height: isMobile ? '32px' : '46px', width: 'auto', objectFit: 'contain' }} />
-          </div>
-        </div>
-
         {/* ── MAIN CONTENT AREA WITH 6 FEATURE BADGES INSIDE CARD ── */}
         <div style={{
           display: 'flex',
@@ -213,6 +187,33 @@ export function CurtainLaunchScreen() {
 
           {/* Center Column: Main Title, Info & Countdown */}
           <div style={{ flex: 1, minWidth: 0 }}>
+            {/* Logos centered right above Welcome Back */}
+            <div style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              gap: isMobile ? '1rem' : '2.5rem',
+              marginBottom: '0.8rem',
+              marginTop: '0.2rem',
+            }}>
+              {heroImg && (
+                <div style={{
+                  padding: isMobile ? '0.35rem 0.7rem' : '0.45rem 1.1rem',
+                  background: '#FFFFFF', borderRadius: '12px',
+                  border: '1.5px solid #00F2FE', boxShadow: '0 0 15px rgba(0,242,254,0.4)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                }}>
+                  <img src={heroImg} alt="KEC Emblem" style={{ height: isMobile ? '32px' : '44px', width: 'auto', objectFit: 'contain' }} />
+                </div>
+              )}
+              <div style={{
+                padding: isMobile ? '0.35rem 0.7rem' : '0.45rem 1.1rem',
+                background: '#FFFFFF', borderRadius: '12px',
+                border: '1.5px solid #F4C542', boxShadow: '0 0 15px rgba(244,197,66,0.4)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                <img src={logoImg} alt="KECAA Logo" style={{ height: isMobile ? '32px' : '44px', width: 'auto', objectFit: 'contain' }} />
+              </div>
+            </div>
+
             {/* Cursive Welcome Back */}
             <div style={{
               fontFamily: "'Dancing Script','Brush Script MT',cursive,Georgia,serif",
