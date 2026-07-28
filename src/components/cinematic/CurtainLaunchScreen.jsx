@@ -125,12 +125,12 @@ export function CurtainLaunchScreen() {
         </>
       )}
 
-      {/* ═══════════ MAIN GLASS CARD LARGE EXPANDED LAYOUT (~1280px max-width) ═══════════ */}
+      {/* ═══════════ MAIN GLASS CARD: EXPANDED TOP/LEFT/RIGHT, BOTTOM TIGHT ═══════════ */}
       <div style={{
         position: 'relative', zIndex: 110,
-        width: isMobile ? '94%' : 'calc(100% - 80px)',
-        maxWidth: '1280px',
-        padding: isMobile ? '1.6rem 1rem 1.2rem' : '2.5rem 2.8rem 2.2rem',
+        width: isMobile ? '96%' : 'calc(100% - 40px)',
+        maxWidth: '1380px',
+        padding: isMobile ? '1.8rem 1rem 0.8rem' : '2.8rem 3.5rem 1rem',
         margin: '0 auto',
         textAlign: 'center', borderRadius: '28px',
         background: 'rgba(8,16,34,0.94)', backdropFilter: 'blur(28px)', WebkitBackdropFilter: 'blur(28px)',
@@ -157,7 +157,7 @@ export function CurtainLaunchScreen() {
         {/* Header Logo Row - KEC emblem on left, KECAA logo on right */}
         <div style={{
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          maxWidth: '1120px', margin: '0.2rem auto 1.4rem auto',
+          maxWidth: '1240px', margin: '0.2rem auto 1.4rem auto',
           padding: '0 0.5rem',
         }}>
           {heroImg && (
