@@ -11,7 +11,7 @@ import campusImg from '../../assets/IMG_000112.jpg';
 const BG_IMAGES = [bangaloreImg, cbeImg, campusImg];
 
 export function CurtainLaunchScreen() {
-  const [countdown, setCountdown] = useState(20);
+  const [countdown, setCountdown] = useState(10);
   const [curtainState, setCurtainState] = useState('hidden');
   const [showSparkShower, setShowSparkShower] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
